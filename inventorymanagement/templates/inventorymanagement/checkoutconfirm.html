@@ -1,0 +1,15 @@
+{% extends "inventorymanagement/base.html" %}
+
+{% block content %}
+    <h1>Chemical Borrowing System</h1>
+    <h2> Confirmation </h2>
+    <p1> You checked out this chemical:</p1>
+    <ul>
+        <li><strong>Bottle code: </strong>{{ bottle.id }}</li>
+        <li><strong>Name: </strong>{{ bottle.description }}</li>
+        <li><strong>Owner code: </strong>{{ bottle.code }}</li>
+        <li><strong>Owner name: </strong>{{ bottle.owner }}</li>
+        <li><strong>Location: </strong>{{ bottle.location }}</li>
+    </ul>
+    <p1> Please remember to return the chemical by {{ bottle.due_back }} </p1>
+{% endblock %}

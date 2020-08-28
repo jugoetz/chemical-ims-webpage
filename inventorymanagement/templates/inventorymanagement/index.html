@@ -1,0 +1,15 @@
+{% extends "inventorymanagement/base.html" %}
+
+{% block content %}
+  <h1>Chemical Borrowing System: Home</h1>
+  <p>Welcome to the Bode group Chemical Borrowing System, a website developed by <em>Julian</em>!</p>
+  <h2>Links</h2>
+  <p>In here you can:</p>
+  <ul>
+    <li><strong><a href="{% url 'inventorymanagement:borrow' %}">Borrow a bottle</a></strong></li>
+    <li><strong><a href="{% url 'inventorymanagement:return' %}">Return a bottle (or mark it empty)</a></strong></li>
+    <li><strong><a href="{% url 'inventorymanagement:status' %}">Check the status of a bottle</a></strong></li>
+  </ul>
+  <br><br><br>
+  <p> This is a development version. If you find errors or experience unexpected behavior, please notify <em>Julian</em>.</p>
+{% endblock %}
