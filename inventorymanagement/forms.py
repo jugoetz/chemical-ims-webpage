@@ -68,52 +68,6 @@ def return_list_with_ascending_x_values(start, interval, steps):
     return new_list
 
 
-# class CheckOutForm(forms.Form):
-#
-#     list_of_loc_groups = [
-#         ('BOD', 'Bode'),
-#         ('CAR', 'Carreira'),
-#         ('CHE', 'Chen'),
-#         ('DIE', 'Diederich'),
-#         ('EBE', 'Ebert'),
-#         ('HIL', 'Hilvert'),
-#         ('KAS', 'Kast'),
-#         ('MOR', 'Morandi'),
-#         ('THI', 'Thilgen'),
-#         ('WEN', 'Wennemers'),
-#         ('YAM', 'Yamakoshi'),
-#         ('ZEN', 'Zenobi'),
-#         ('OTH', 'OTHER')
-#     ]
-#     full_name = forms.CharField(label='Full Name', max_length=50)
-#     email = forms.EmailField(label='ETH E-Mail Address', max_length=100)
-#     send_confirmation = forms.BooleanField(label='Send confirmation e-mail?', required=False)
-#     group = forms.ChoiceField(choices=list_of_loc_groups)
-#     bottle_code = forms.CharField(
-#         max_length=10,
-#         strip=True
-#     )
-#     return_date = forms.DateField(
-#         label='Anticipated Return Date',
-#         initial=datetime.date.today() + datetime.timedelta(days=3),
-#         help_text="Enter a date between now and 2 weeks (default 3 days).",
-#         localize=True,
-#         widget=forms.SelectDateWidget(years=return_list_with_ascending_x_values(datetime.date.today().year, 1, 1)),
-#     )
-#
-#
-# class CheckInForm(forms.Form):
-#     email = forms.EmailField(label='ETH E-Mail Address', max_length=100)
-#     bottle_code = forms.CharField(
-#         max_length=10,
-#         strip=True
-#     )
-#     status = forms.ChoiceField(
-#         choices=[('EMPTY', 'empty'), ('OK', 'Returned to assigned shelf')],
-#         widget=forms.RadioSelect
-#     )
-#
-
 class CheckStatus(forms.Form):
     """
     This is a form to ask user which bottle to check.
