@@ -65,7 +65,8 @@ class Bottle(models.Model):
         max_length=100,
         null=True,
         blank=True,
-        help_text='Please use your ETH email address'
+        help_text='Please use your ETH email address',
+        validators=[validate_ethz_email_address]
     )
     borrower_group = models.CharField(
         max_length=9,
