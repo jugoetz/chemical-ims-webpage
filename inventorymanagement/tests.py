@@ -10,12 +10,12 @@ class BottleCheckoutFormTests(TestCase):
 
     def setUp(self) -> None:
         self.acceptable_data = {
-              'id': 000000,
-              'borrower_full_name': 'Test Guy',
-              'borrower_email': 'testguy@ethz.ch',
-              'borrower_group': 'Bode',
-              'due_back': timezone.now().date() + timedelta(days=7),
-              'status': 'out'
+            'id':                 000000,
+            'borrower_full_name': 'Test Guy',
+            'borrower_email':     'testguy@ethz.ch',
+            'borrower_group':     'Bode',
+            'due_back':           timezone.now().date() + timedelta(days=7),
+            'status':             'out'
         }
 
     def test_accepts_no_past_due_back_date(self):
@@ -59,7 +59,6 @@ class BottleCheckoutFormTests(TestCase):
         acceptable_data_email_modified['borrower_email'] = ethz_email
         form = BottleCheckoutForm(data=acceptable_data_email_modified)
         self.assertTrue(form.is_valid())
-
 
     def test_does_not_accept_non_ethz_email_adress(self):
         """
