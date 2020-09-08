@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:working-branch" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="12795d59-4cfa-4ed6-bad6-17a098af5260" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/inventorymanagement/updateFromExpereact.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/updateFromExpereact.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="CREATE_PULL_REQUEST_DEFAULT_BRANCH" value="master" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_USER" value="jugoetz" />
+    <option name="CREATE_PULL_REQUEST_DEFAULT_REPO_NAME" value="chemical-ims-webpage" />
+  </component>
+  <component name="JupyterTrust" id="7ce2bc4b-44a0-4d78-94dd-2699a98ca6cc" />
+  <component name="ProjectId" id="1grOa37rtEdNKPZ44IuqJPDsB4D" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ChemicalBorrowingWebApp" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ChemicalBorrowingWebApp" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/inventorymanagement" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.scratch">
+    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chemical-ims-webpage" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="chemical-ims-webpage" type="Python.DjangoServer" factoryName="Django server">
+      <module name="chemical-ims-webpage" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="ChemicalBorrowingWebApp.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.scratch" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="12795d59-4cfa-4ed6-bad6-17a098af5260" name="Default Changelist" comment="" />
+      <created>1598869305735</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598869305735</updated>
+      <workItem from="1598869306906" duration="6001000" />
+      <workItem from="1598948510756" duration="644000" />
+      <workItem from="1598953633066" duration="2717000" />
+      <workItem from="1599121066245" duration="2055000" />
+      <workItem from="1599126555757" duration="2092000" />
+      <workItem from="1599465560717" duration="485000" />
+      <workItem from="1599467181691" duration="7031000" />
+    </task>
+    <task id="LOCAL-00001" summary="add db to .gitignore">
+      <created>1598871534763</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1598871534763</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add tests and a validator">
+      <created>1598890102140</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598890102140</updated>
+    </task>
+    <task id="LOCAL-00003" summary="remove duplicate dict">
+      <created>1598890223043</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1598890223043</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add migration and unversioned files">
+      <created>1598890335352</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1598890335352</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add requirements.txt">
+      <created>1598954793691</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1598954793691</updated>
+    </task>
+    <task id="LOCAL-00006" summary="change URL to /inventory/">
+      <created>1598960476095</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1598960476095</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Minor reformat">
+      <created>1599142803481</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1599142803481</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Change urlpattern to inventory/">
+      <created>1599557431467</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1599557431467</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add bottle info to status.html in case of checked out bottle">
+      <created>1599557459843</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1599557459843</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add requirements.txt">
+      <created>1599557496923</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1599557496923</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add scan_date to models.py">
+      <created>1599557669005</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1599557669005</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Revert &quot;Add scan_date to models.py&quot;&#10;&#10;This reverts commit fd77cf6a">
+      <created>1599557835078</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1599557835078</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="working-branch" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="RELOAD_CONTEXT" value="false" />
+    <MESSAGE value="add db to .gitignore" />
+    <MESSAGE value="add tests and a validator" />
+    <MESSAGE value="remove duplicate dict" />
+    <MESSAGE value="add migration and unversioned files" />
+    <MESSAGE value="add requirements.txt" />
+    <MESSAGE value="change URL to /inventory/" />
+    <MESSAGE value="Minor reformat" />
+    <MESSAGE value="Change urlpattern to inventory/" />
+    <MESSAGE value="Add bottle info to status.html in case of checked out bottle" />
+    <MESSAGE value="Add requirements.txt" />
+    <MESSAGE value="Add scan_date to models.py" />
+    <MESSAGE value="Revert &quot;Add scan_date to models.py&quot;&#10;&#10;This reverts commit fd77cf6a" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;Add scan_date to models.py&quot;&#10;&#10;This reverts commit fd77cf6a" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="240" y="65" key="#Deployment" timestamp="1598960235226">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="240" y="65" key="#Deployment/0.0.1280.800@0.0.1280.800" timestamp="1598960235226" />
+    <state x="344" y="130" key="#Servers" timestamp="1598960220158">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="344" y="130" key="#Servers/0.0.1280.800@0.0.1280.800" timestamp="1598960220158" />
+    <state x="104" y="62" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599142477263">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="104" y="62" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1599142477263" />
+    <state x="328" y="143" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1598953184208">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="328" y="143" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1598953184208" />
+    <state x="85" y="0" key="CommitChangelistDialog2" timestamp="1599557834859">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="85" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599557834859" />
+    <state x="100" y="100" width="1080" height="600" key="DiffContextDialog" timestamp="1599128879009">
+      <screen x="0" y="23" width="1280" height="720" />
+    </state>
+    <state x="100" y="100" width="1080" height="600" key="DiffContextDialog/0.23.1280.720@0.23.1280.720" timestamp="1599128879009" />
+    <state x="529" y="145" key="FileChooserDialogImpl" timestamp="1599122753677">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="529" y="145" key="FileChooserDialogImpl/0.0.1280.800@0.0.1280.800" timestamp="1599122753677" />
+    <state x="373" y="274" key="Github.CreatePullRequestDialog" timestamp="1599557911468">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="373" y="274" key="Github.CreatePullRequestDialog/0.0.1280.800@0.0.1280.800" timestamp="1599557911468" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1599472127548">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1599472127548" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1599472127547">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1599472127547" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1599472127546">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1599472127546" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1599472127548">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1599472127548" />
+    <state x="382" y="109" key="RollbackChangesDialog" timestamp="1599142716081">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="382" y="109" key="RollbackChangesDialog/0.0.1280.800@0.0.1280.800" timestamp="1599142716081" />
+    <state x="190" y="23" key="SettingsEditor" timestamp="1599142671881">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="190" y="23" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1599142671881" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1599557873640">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1599557873640" />
+    <state x="476" y="306" width="441" height="188" key="WebDeployment.AddServerDialog.v.1" timestamp="1598960249677">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="476" y="306" width="441" height="188" key="WebDeployment.AddServerDialog.v.1/0.0.1280.800@0.0.1280.800" timestamp="1598960249677" />
+    <state x="236" y="139" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1599466819489">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="236" y="139" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1280.800@0.0.1280.800" timestamp="1599466819489" />
+    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599467147758">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1599467147758" />
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1599472092611">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1599472092611" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/chemical_ims_webpage$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1599470231447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+  </component>
+</project>
