@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'inventorymanagement.apps.InventorymanagementConfig',
-    #'django_celery_beat',
 ]
 
 MIDDLEWARE = [
