@@ -9,7 +9,6 @@ import datetime
 
 
 class Bottle(models.Model):
-
     choices_of_loc_groups = [
         ('Bode', 'Bode'),
         ('Carreira', 'Carreira'),
@@ -50,7 +49,7 @@ class Bottle(models.Model):
     due_back = models.DateField(
         null=True,
         blank=True,
-        default=timezone.now()+datetime.timedelta(days=3),
+        default=timezone.now() + datetime.timedelta(days=3),
         help_text="Enter a date between now and 2 weeks (default 3 days).",
         verbose_name='Anticipated return date',
         validators=[validate_two_week_checkout_limit, validate_due_back_not_in_past]
@@ -65,7 +64,8 @@ class Bottle(models.Model):
         max_length=100,
         null=True,
         blank=True,
-        help_text='Please use your ETH email address'
+        help_text='Please use your ETH email address',
+        validators=[validate_ethz_email_address]
     )
     borrower_group = models.CharField(
         max_length=9,
@@ -90,8 +90,6 @@ class Bottle(models.Model):
             return (current_date - due_date) > datetime.timedelta(days=1)
         else:
             return False
-
-
 
     is_overdue.boolean = True
     is_overdue.description = 'Overdue?'
