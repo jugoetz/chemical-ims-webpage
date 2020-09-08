@@ -42,6 +42,7 @@ class Bottle(models.Model):
         default='in',
         max_length=5
     )
+    scan_date = models.CharField(max_length=20, default='n/a')
     checkout_date = models.DateField(
         null=True,
         blank=True,
