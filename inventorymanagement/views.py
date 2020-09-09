@@ -33,6 +33,7 @@ def get_checkout_data(request):
             # if form.cleaned_data['send_confirmation'] is True:  # send an email if selected by user
             #     form.send_confirmation_email()
             # redirect to a new URL:
+            form.save()
             response = HttpResponseRedirect(reverse('inventorymanagement:confirmcheckout',
                                                     kwargs={'pk': form.cleaned_data['id']}
                                                     ))
