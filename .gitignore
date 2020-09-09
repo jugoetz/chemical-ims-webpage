@@ -138,3 +138,6 @@ dmypy.json
 
 # data containers
 *.dat
+
+#pycharm
+workspace.xml
