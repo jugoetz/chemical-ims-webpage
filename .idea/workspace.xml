@@ -26,7 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12795d59-4cfa-4ed6-bad6-17a098af5260" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/inventorymanagement/updateFromExpereact.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/updateFromExpereact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventorymanagement/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventorymanagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +79,7 @@
       <recent name="$PROJECT_DIR$/inventorymanagement" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.scratch">
+  <component name="RunManager" selected="Python.updateFromExpereact">
     <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chemical-ims-webpage" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,6 +94,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="updateFromExpereact" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chemical-ims-webpage" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/inventorymanagement" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/inventorymanagement/updateFromExpereact.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -126,6 +150,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.updateFromExpereact" />
         <item itemvalue="Python.scratch" />
       </list>
     </recent_temporary>
@@ -144,7 +169,7 @@
       <workItem from="1599121066245" duration="2055000" />
       <workItem from="1599126555757" duration="2092000" />
       <workItem from="1599465560717" duration="485000" />
-      <workItem from="1599467181691" duration="7031000" />
+      <workItem from="1599467181691" duration="15272000" />
     </task>
     <task id="LOCAL-00001" summary="add db to .gitignore">
       <created>1598871534763</created>
@@ -230,7 +255,63 @@
       <option name="project" value="LOCAL" />
       <updated>1599557835078</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Add more verbose output to updateFromExpereact.py">
+      <created>1599559759329</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1599559759329</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add more verbose output to updateFromExpereact.py">
+      <created>1599559853835</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1599559853835</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add *.dat to .gitignore">
+      <created>1599571900997</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1599571900997</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Remove celery_beat from apps">
+      <created>1599572010198</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1599572010198</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Add cookie for user data">
+      <created>1599643437531</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1599643437531</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Delete tasks.py">
+      <created>1599643457377</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1599643457377</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Migration">
+      <created>1599643583042</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1599643583042</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Switch to POST for statusform.html">
+      <created>1599643611012</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1599643611012</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +355,14 @@
     <MESSAGE value="Add requirements.txt" />
     <MESSAGE value="Add scan_date to models.py" />
     <MESSAGE value="Revert &quot;Add scan_date to models.py&quot;&#10;&#10;This reverts commit fd77cf6a" />
-    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;Add scan_date to models.py&quot;&#10;&#10;This reverts commit fd77cf6a" />
+    <MESSAGE value="Add more verbose output to updateFromExpereact.py" />
+    <MESSAGE value="Add *.dat to .gitignore" />
+    <MESSAGE value="Remove celery_beat from apps" />
+    <MESSAGE value="Add cookie for user data" />
+    <MESSAGE value="Delete tasks.py" />
+    <MESSAGE value="Migration" />
+    <MESSAGE value="Switch to POST for statusform.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Switch to POST for statusform.html" />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="65" key="#Deployment" timestamp="1598960235226">
@@ -293,10 +381,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="328" y="143" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1598953184208" />
-    <state x="85" y="0" key="CommitChangelistDialog2" timestamp="1599557834859">
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2" timestamp="1599643610773">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="85" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599557834859" />
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599643610773" />
     <state x="100" y="100" width="1080" height="600" key="DiffContextDialog" timestamp="1599128879009">
       <screen x="0" y="23" width="1280" height="720" />
     </state>
@@ -305,26 +393,30 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="529" y="145" key="FileChooserDialogImpl/0.0.1280.800@0.0.1280.800" timestamp="1599122753677" />
-    <state x="373" y="274" key="Github.CreatePullRequestDialog" timestamp="1599557911468">
+    <state x="373" y="274" key="Github.CreatePullRequestDialog" timestamp="1599559967746">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="373" y="274" key="Github.CreatePullRequestDialog/0.0.1280.800@0.0.1280.800" timestamp="1599557911468" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1599472127548">
+    <state x="373" y="274" key="Github.CreatePullRequestDialog/0.0.1280.800@0.0.1280.800" timestamp="1599559967746" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1599573235471">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1599472127548" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1599472127547">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1599573235471" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1599573235470">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1599472127547" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1599472127546">
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1599573235470" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1599573235469">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1599472127546" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1599472127548">
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1599573235469" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1599573235470">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1599472127548" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1599573235470" />
+    <state x="278" y="168" key="MultipleFileMergeDialog" timestamp="1599559868274">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="278" y="168" key="MultipleFileMergeDialog/0.0.1280.800@0.0.1280.800" timestamp="1599559868274" />
     <state x="382" y="109" key="RollbackChangesDialog" timestamp="1599142716081">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -333,10 +425,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="190" y="23" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1599142671881" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1599557873640">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1599559949592">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1599557873640" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1599559949592" />
     <state x="476" y="306" width="441" height="188" key="WebDeployment.AddServerDialog.v.1" timestamp="1598960249677">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -345,16 +437,17 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="236" y="139" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1280.800@0.0.1280.800" timestamp="1599466819489" />
-    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599467147758">
+    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599559996791">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1599467147758" />
+    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1599559996791" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1599472092611">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1599472092611" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/chemical_ims_webpage$updateFromExpereact.coverage" NAME="updateFromExpereact Coverage Results" MODIFIED="1599564851030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/inventorymanagement" />
     <SUITE FILE_PATH="coverage/chemical_ims_webpage$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1599470231447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
   </component>
 </project>

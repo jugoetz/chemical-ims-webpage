@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.forms import ModelForm, HiddenInput
 from .models import Bottle
-import datetime
 
 
 class BottleCheckoutForm(ModelForm):
@@ -24,6 +23,21 @@ class BottleCheckoutForm(ModelForm):
     # TODO find out how to send email or delete the outcommented statement below
     # send_confirmation = forms.BooleanField(label='Send confirmation e-mail?', required=False)
 
+    def clean_id(self):
+        """
+        Validate that the user-entered bottle code exists in the database
+        """
+        id = ''.join(self.cleaned_data['id'].split('-'))
+        try:
+            Bottle.objects.filter(id=id)[0]
+        except IndexError:
+            raise ValidationError(
+                message='This bottle is not listed in the database. '
+                        'Please check if you used the right bottle code and try again.',
+                code='not_in_db'
+            )
+        return id
+
     def send_confirmation_email(self):
 
         subject = 'Confirmation: Inventory checkout'
@@ -40,7 +54,7 @@ class BottleCheckoutForm(ModelForm):
 
 class BottleCheckinForm(ModelForm):
     """
-        This is a form derived from the models.Bottle that records data to return a bottle
+    This is a form derived from the models.Bottle that records data to return a bottle
     """
     class Meta:
         model = Bottle
@@ -51,6 +65,21 @@ class BottleCheckinForm(ModelForm):
         widget=forms.RadioSelect
     )
     status = 'in'
+
+    def clean_id(self):
+        """
+        Validate that the user-entered bottle code exists in the database
+        """
+        id = ''.join(self.cleaned_data['id'].split('-'))
+        try:
+            Bottle.objects.filter(id=id)[0]
+        except IndexError:
+            raise ValidationError(
+                message='This bottle is not listed in the database. '
+                        'Please check if you used the right bottle code and try again.',
+                code='not_in_db'
+            )
+        return id
 
 
 def return_list_with_ascending_x_values(start, interval, steps):
@@ -76,13 +105,14 @@ class CheckStatus(forms.Form):
     bottle_code = forms.CharField(
         max_length=10,
         strip=True,
-        help_text='Enter the code of the bottle you would like to check (without dashes)',
-        initial='123456',
         required=True
     )
 
     def clean_bottle_code(self):
-        bottle_code = self.cleaned_data['bottle_code']
+        """
+        Validate that the user-entered bottle code exists in the database
+        """
+        bottle_code = ''.join(self.cleaned_data['bottle_code'].split('-'))
         try:
             Bottle.objects.filter(id=bottle_code)[0]
         except IndexError:
