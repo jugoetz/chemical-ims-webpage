@@ -16,7 +16,7 @@ def get_checkout_data(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         bottle_code = request.POST['id']  # get bottle_code from user input
-        bottle_code_clean = ''.join(bottle_code.split('-'))  # remove dashes that people might have placed
+        bottle_code_clean = bottle_code.replace('-', '')  # remove dashes that people might have placed
         try:
             instance = Bottle.objects.get(id=bottle_code_clean)  # get the Bottle instance user requested to change
             # create a form instance and populate it with data from the request + the Bottle instance to be changed
@@ -27,13 +27,15 @@ def get_checkout_data(request):
             form = BottleCheckoutForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
+            form.cleaned_data['id'] = form.cleaned_data['id'].replace('-', '')  # remove dashes that user might have used in bottle code
             # process the data in form.cleaned_data as required
             # TODO remove following 2 comments when send_email is solved
             # if form.cleaned_data['send_confirmation'] is True:  # send an email if selected by user
             #     form.send_confirmation_email()
-            form.save()
             # redirect to a new URL:
-            response = HttpResponseRedirect(reverse('inventorymanagement:confirmcheckout', kwargs={'pk': form.cleaned_data['id']}))
+            response = HttpResponseRedirect(reverse('inventorymanagement:confirmcheckout',
+                                                    kwargs={'pk': form.cleaned_data['id']}
+                                                    ))
             # add cookies to the response to help fill form next time (max_age is 4 weeks...in seconds)
             response.set_cookie('email', form.cleaned_data['borrower_email'], max_age=2419200)
             response.set_cookie('fullname', form.cleaned_data['borrower_full_name'], max_age=2419200)
@@ -67,7 +69,7 @@ def get_checkin_data(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         bottle_code = request.POST['id']  # get bottle_code from user input
-        bottle_code_clean = ''.join(bottle_code.split('-'))  # remove dashes that people might have placed
+        bottle_code_clean = bottle_code.replace('-', '')  # remove dashes that people might have placed
         try:
             instance = Bottle.objects.get(id=bottle_code_clean)  # get the Bottle instance user requested to change
             # create a form instance and populate it with data from the request + the Bottle instance to be changed
@@ -79,21 +81,23 @@ def get_checkin_data(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
+            # remove dashes that user might have used in bottle code
+            form.cleaned_data['id'] = form.cleaned_data['id'].replace('-', '')
+            # form.cleaned_data['return_date'] = 'n/a'
             if form.cleaned_data['return_status'] == 'EMPTY':
                 # delete the Bottle instance
-                form.save()
+                form.save()  # not sure if this call is necessary with the instance.save() afterwards
                 instance.status = 'empty'
                 instance.save()
-                return HttpResponseRedirect(reverse('inventorymanagement:confirmempty', args=(bottle_code,)))
+                return HttpResponseRedirect(reverse('inventorymanagement:confirmempty', args=(bottle_code_clean,)))
             else:
                 form.save()
             # redirect to a new URL:
-            return HttpResponseRedirect(reverse('inventorymanagement:confirmreturn', args=(bottle_code,)))
+            return HttpResponseRedirect(reverse('inventorymanagement:confirmreturn', args=(bottle_code_clean,)))
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = BottleCheckinForm()
-    print('3')
     return render(request, 'inventorymanagement/checkinform.html', {'form': form})
 
 
