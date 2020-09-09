@@ -26,11 +26,29 @@ def get_checkout_data(request):
             #     form.send_confirmation_email()
             form.save()
             # redirect to a new URL:
-            return HttpResponseRedirect(reverse('inventorymanagement:confirmcheckout', kwargs={'pk': form.cleaned_data['id']}))
+            response = HttpResponseRedirect(reverse('inventorymanagement:confirmcheckout', kwargs={'pk': form.cleaned_data['id']}))
+            # add cookies to the response to help fill form next time (max_age is 4 weeks...in seconds)
+            response.set_cookie('email', form.cleaned_data['borrower_email'], max_age=2419200)
+            response.set_cookie('fullname', form.cleaned_data['borrower_full_name'], max_age=2419200)
+            response.set_cookie('group', form.cleaned_data['borrower_group'], max_age=2419200)
+            return response
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = BottleCheckoutForm()
+
+        fullname = request.COOKIES.get('fullname')
+        group = request.COOKIES.get('group')
+        email = request.COOKIES.get('email')
+        if fullname is None or group is None or email is None:
+            form = BottleCheckoutForm()  # return unbound form
+        else:
+            # bind cookie data to form
+            form = BottleCheckoutForm(initial={
+                'borrower_full_name': fullname,
+                'borrower_email': email,
+                'borrower_group': group,
+            })
+
 
     return render(request, 'inventorymanagement/checkoutform.html', {'form': form})
 
@@ -71,12 +89,11 @@ def get_status_data(request):
     This view renders the status check form, and sends the user-entered data back to the server
     """
     # if this is a GET request we need to process the form data
-    if request.method == 'GET':
+    if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = CheckStatus(request.GET)
+        form = CheckStatus(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            print(form.cleaned_data)
             # process the data in form.cleaned_data as required
             # redirect to a new URL:
             return HttpResponseRedirect(reverse(
