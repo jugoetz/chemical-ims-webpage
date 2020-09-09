@@ -26,12 +26,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12795d59-4cfa-4ed6-bad6-17a098af5260" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventorymanagement/expereact_source.dat" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/expereact_source.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventorymanagement/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventorymanagement/tasks.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/inventorymanagement/templates/inventorymanagement/statusform.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/templates/inventorymanagement/statusform.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventorymanagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +168,7 @@
       <workItem from="1599121066245" duration="2055000" />
       <workItem from="1599126555757" duration="2092000" />
       <workItem from="1599465560717" duration="485000" />
-      <workItem from="1599467181691" duration="12564000" />
+      <workItem from="1599467181691" duration="12783000" />
     </task>
     <task id="LOCAL-00001" summary="add db to .gitignore">
       <created>1598871534763</created>
@@ -286,7 +282,28 @@
       <option name="project" value="LOCAL" />
       <updated>1599572010198</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add cookie for user data">
+      <created>1599643437531</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1599643437531</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Delete tasks.py">
+      <created>1599643457377</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1599643457377</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Migration">
+      <created>1599643583042</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1599643583042</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +350,10 @@
     <MESSAGE value="Add more verbose output to updateFromExpereact.py" />
     <MESSAGE value="Add *.dat to .gitignore" />
     <MESSAGE value="Remove celery_beat from apps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove celery_beat from apps" />
+    <MESSAGE value="Add cookie for user data" />
+    <MESSAGE value="Delete tasks.py" />
+    <MESSAGE value="Migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Migration" />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="65" key="#Deployment" timestamp="1598960235226">
@@ -352,10 +372,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="328" y="143" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1598953184208" />
-    <state x="85" y="0" key="CommitChangelistDialog2" timestamp="1599572009904">
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2" timestamp="1599643582814">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="85" y="0" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599572009904" />
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599643582814" />
     <state x="100" y="100" width="1080" height="600" key="DiffContextDialog" timestamp="1599128879009">
       <screen x="0" y="23" width="1280" height="720" />
     </state>

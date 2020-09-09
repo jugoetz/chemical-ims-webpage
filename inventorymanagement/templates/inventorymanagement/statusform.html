@@ -3,7 +3,8 @@
 {% block content %}
     <h1>Chemical Borrowing System</h1>
     <p1> To check the status of a chemical, please enter the bottle code below</p1>
-        <form action = "" method = "get">
+        <form action = "" method = "post">
+            {% csrf_token %}
             <table>
                 {{ form.as_table }}
             </table>
