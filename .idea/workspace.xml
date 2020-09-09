@@ -19,14 +19,17 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:working-branch" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12795d59-4cfa-4ed6-bad6-17a098af5260" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventorymanagement/updateFromExpereact.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/updateFromExpereact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventorymanagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="working-branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -167,7 +170,7 @@
       <workItem from="1599121066245" duration="2055000" />
       <workItem from="1599126555757" duration="2092000" />
       <workItem from="1599465560717" duration="485000" />
-      <workItem from="1599467181691" duration="18946000" />
+      <workItem from="1599467181691" duration="21617000" />
     </task>
     <task id="LOCAL-00001" summary="add db to .gitignore">
       <created>1598871534763</created>
@@ -330,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599662547027</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="remove development version sentence">
+      <created>1599663316699</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1599663316699</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,7 +357,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="working-branch" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -384,7 +394,8 @@
     <MESSAGE value="Add recognition of codes with dashes and validation of codes against those present in the db" />
     <MESSAGE value="Remove bug in admin where edit window could not open due to attempt to edit non-editable checkout_date field" />
     <MESSAGE value="Remove bug in Checkin/out where giving id with dashes would create new instance &amp;&amp; added hidden input to remove due_back upon return of a chemical" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove bug in Checkin/out where giving id with dashes would create new instance &amp;&amp; added hidden input to remove due_back upon return of a chemical" />
+    <MESSAGE value="remove development version sentence" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove development version sentence" />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="65" key="#Deployment" timestamp="1598960235226">
@@ -403,10 +414,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="328" y="143" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1598953184208" />
-    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2" timestamp="1599662546833">
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2" timestamp="1599663316521">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599662546833" />
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599663316521" />
     <state x="100" y="100" width="1080" height="600" key="DiffContextDialog" timestamp="1599128879009">
       <screen x="0" y="23" width="1280" height="720" />
     </state>
@@ -415,26 +426,26 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="529" y="145" key="FileChooserDialogImpl/0.0.1280.800@0.0.1280.800" timestamp="1599122753677" />
-    <state x="373" y="274" key="Github.CreatePullRequestDialog" timestamp="1599662607319">
+    <state x="373" y="274" key="Github.CreatePullRequestDialog" timestamp="1599663346498">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="373" y="274" key="Github.CreatePullRequestDialog/0.0.1280.800@0.0.1280.800" timestamp="1599662607319" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1599573235471">
+    <state x="373" y="274" key="Github.CreatePullRequestDialog/0.0.1280.800@0.0.1280.800" timestamp="1599663346498" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1599668372685">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1599573235471" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1599573235470">
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1599668372685" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1599668372684">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1599573235470" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1599573235469">
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1599668372684" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1599668372684">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1599573235469" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1599573235470">
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1599668372684" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1599668372685">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1599573235470" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1599668372685" />
     <state x="278" y="168" key="MultipleFileMergeDialog" timestamp="1599559868274">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -447,10 +458,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="190" y="23" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1599142671881" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1599662622497">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1599668259318">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1599662622497" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1599668259318" />
     <state x="476" y="306" width="441" height="188" key="WebDeployment.AddServerDialog.v.1" timestamp="1598960249677">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -459,10 +470,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="236" y="139" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1280.800@0.0.1280.800" timestamp="1599466819489" />
-    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599662685680">
+    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599668235953">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1599662685680" />
+    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1599668235953" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1599472092611">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
