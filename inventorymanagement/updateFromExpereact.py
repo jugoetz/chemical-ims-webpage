@@ -116,6 +116,7 @@ def commit_df_to_db_detail(df_expereact, db_path):
         # find the ones that where deleted from expereact and delete them from db
         df_all = df_empty['id'].to_list() + df_non_empty['id'].to_list()
         list_delete = list(set(df_all) - set(df_expereact['id'].to_list()))
+        # TODO check if the location of any has changed
         for delete_item in list_delete:
             cur.execute('DELETE FROM inventorymanagement_bottle WHERE id=?', (delete_item,))
         conn.commit()
