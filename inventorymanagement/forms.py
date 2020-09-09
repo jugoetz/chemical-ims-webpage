@@ -58,8 +58,8 @@ class BottleCheckinForm(ModelForm):
     """
     class Meta:
         model = Bottle
-        fields = ['id', 'status']
-        widgets = {'status': HiddenInput}
+        fields = ['id', 'status', 'due_back']
+        widgets = {'status': HiddenInput, 'due_back': HiddenInput}
     return_status = forms.ChoiceField(
         choices=[('EMPTY', 'empty'), ('OK', 'Returned to assigned shelf')],
         widget=forms.RadioSelect

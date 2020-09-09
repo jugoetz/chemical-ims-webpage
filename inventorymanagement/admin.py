@@ -9,7 +9,7 @@ class BottleAdmin(admin.ModelAdmin):
         (None, {'fields': ['id']}),
         ('Bottle information', {'fields': ['description', 'supplier', 'price', 'quantity']}),
         ('Location information', {'fields': ['owner', 'code', 'location']}),
-        ('Status information', {'fields': ['status', 'checkout_date', 'due_back']}),
+        ('Status information', {'fields': ['status', 'due_back']}),
         ('Last borrower information', {'fields': ['borrower_full_name', 'borrower_group', 'borrower_email']}),
     ]
     list_display = ('id', 'code', 'location', 'status', 'checkout_date', 'due_back', 'is_overdue')
