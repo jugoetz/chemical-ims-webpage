@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.views import generic
+from django.core import exceptions
 from .forms import *
 from . import models
 
@@ -15,9 +16,15 @@ def get_checkout_data(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         bottle_code = request.POST['id']  # get bottle_code from user input
-        instance = Bottle.objects.get(id=bottle_code)  # get the Bottle instance user requested to change
-        # create a form instance and populate it with data from the request + the Bottle instance to be changed:
-        form = BottleCheckoutForm(request.POST, instance=instance)
+        bottle_code_clean = ''.join(bottle_code.split('-'))  # remove dashes that people might have placed
+        try:
+            instance = Bottle.objects.get(id=bottle_code_clean)  # get the Bottle instance user requested to change
+            # create a form instance and populate it with data from the request + the Bottle instance to be changed
+            form = BottleCheckoutForm(request.POST, instance=instance)
+        except exceptions.ObjectDoesNotExist:
+            # don't call the bottle instance since it will raise another error (as the bottle does not exist)
+            # instead, let the validation method in the form handle it
+            form = BottleCheckoutForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
@@ -59,10 +66,16 @@ def get_checkin_data(request):
     """
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
-        bottle_code = request.POST['id']
-        instance = Bottle.objects.get(id=bottle_code)
-        # create a form instance and populate it with data from the request:
-        form = BottleCheckinForm(request.POST, instance=instance)
+        bottle_code = request.POST['id']  # get bottle_code from user input
+        bottle_code_clean = ''.join(bottle_code.split('-'))  # remove dashes that people might have placed
+        try:
+            instance = Bottle.objects.get(id=bottle_code_clean)  # get the Bottle instance user requested to change
+            # create a form instance and populate it with data from the request + the Bottle instance to be changed
+            form = BottleCheckinForm(request.POST, instance=instance)
+        except exceptions.ObjectDoesNotExist:
+            # don't call the bottle instance since it will raise another error (as the bottle does not exist)
+            # instead, let the validation method in the form handle it
+            form = BottleCheckinForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
@@ -80,7 +93,7 @@ def get_checkin_data(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = BottleCheckinForm()
-
+    print('3')
     return render(request, 'inventorymanagement/checkinform.html', {'form': form})
 
 

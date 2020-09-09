@@ -26,8 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12795d59-4cfa-4ed6-bad6-17a098af5260" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventorymanagement/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventorymanagement/templates/inventorymanagement/statusform.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/templates/inventorymanagement/statusform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventorymanagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +169,7 @@
       <workItem from="1599121066245" duration="2055000" />
       <workItem from="1599126555757" duration="2092000" />
       <workItem from="1599465560717" duration="485000" />
-      <workItem from="1599467181691" duration="12783000" />
+      <workItem from="1599467181691" duration="15272000" />
     </task>
     <task id="LOCAL-00001" summary="add db to .gitignore">
       <created>1598871534763</created>
@@ -303,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599643583042</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Switch to POST for statusform.html">
+      <created>1599643611012</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1599643611012</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +361,8 @@
     <MESSAGE value="Add cookie for user data" />
     <MESSAGE value="Delete tasks.py" />
     <MESSAGE value="Migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Migration" />
+    <MESSAGE value="Switch to POST for statusform.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Switch to POST for statusform.html" />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="65" key="#Deployment" timestamp="1598960235226">
@@ -372,10 +381,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="328" y="143" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1598953184208" />
-    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2" timestamp="1599643582814">
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2" timestamp="1599643610773">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599643582814" />
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599643610773" />
     <state x="100" y="100" width="1080" height="600" key="DiffContextDialog" timestamp="1599128879009">
       <screen x="0" y="23" width="1280" height="720" />
     </state>
