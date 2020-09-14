@@ -26,9 +26,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12795d59-4cfa-4ed6-bad6-17a098af5260" name="Default Changelist" comment="Remove bug due to accidentally d">
-      <change beforePath="$PROJECT_DIR$/inventorymanagement/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventorymanagement/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="12795d59-4cfa-4ed6-bad6-17a098af5260" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +167,7 @@
       <workItem from="1599121066245" duration="2055000" />
       <workItem from="1599126555757" duration="2092000" />
       <workItem from="1599465560717" duration="485000" />
-      <workItem from="1599467181691" duration="21937000" />
+      <workItem from="1599467181691" duration="22139000" />
     </task>
     <task id="LOCAL-00001" summary="add db to .gitignore">
       <created>1598871534763</created>
@@ -360,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599668513913</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Remove bug due to accidentally deleted form.save">
+      <created>1599668773248</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1599668773248</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +397,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="add db to .gitignore" />
     <MESSAGE value="add tests and a validator" />
     <MESSAGE value="remove duplicate dict" />
     <MESSAGE value="add migration and unversioned files" />
@@ -417,7 +421,8 @@
     <MESSAGE value="remove development version sentence" />
     <MESSAGE value="add todo item" />
     <MESSAGE value="add workspace to gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add workspace to gitignore" />
+    <MESSAGE value="Remove bug due to accidentally deleted form.save" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove bug due to accidentally deleted form.save" />
   </component>
   <component name="WindowStateProjectService">
     <state x="240" y="65" key="#Deployment" timestamp="1598960235226">
@@ -436,10 +441,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="328" y="143" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1598953184208" />
-    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2" timestamp="1599668722758">
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2" timestamp="1599668772999">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599668722758" />
+    <state x="85" y="23" width="991" height="720" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1599668772999" />
     <state x="100" y="100" width="1080" height="600" key="DiffContextDialog" timestamp="1599128879009">
       <screen x="0" y="23" width="1280" height="720" />
     </state>
@@ -452,22 +457,26 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="373" y="274" key="Github.CreatePullRequestDialog/0.0.1280.800@0.0.1280.800" timestamp="1599663346498" />
-    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1599668372685">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom" timestamp="1599671816764">
+      <screen x="0" y="23" width="1280" height="720" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1599668372685" />
-    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1599668372684">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1238" height="212" key="GridCell.Tab.0.bottom/0.23.1280.720@0.23.1280.720" timestamp="1599671816764" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center" timestamp="1599671816762">
+      <screen x="0" y="23" width="1280" height="720" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1599668372684" />
-    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1599668372684">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1238" height="212" key="GridCell.Tab.0.center/0.23.1280.720@0.23.1280.720" timestamp="1599671816762" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left" timestamp="1599671816761">
+      <screen x="0" y="23" width="1280" height="720" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1599668372684" />
-    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1599668372685">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state width="1238" height="212" key="GridCell.Tab.0.left/0.23.1280.720@0.23.1280.720" timestamp="1599671816761" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right" timestamp="1599671816763">
+      <screen x="0" y="23" width="1280" height="720" />
     </state>
     <state width="1238" height="212" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1599668372685" />
+    <state width="1238" height="212" key="GridCell.Tab.0.right/0.23.1280.720@0.23.1280.720" timestamp="1599671816763" />
     <state x="278" y="168" key="MultipleFileMergeDialog" timestamp="1599668604661">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -480,10 +489,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="190" y="23" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1599142671881" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1599668519062">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1599668801462">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1599668519062" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1599668801462" />
     <state x="408" y="141" key="VcsDiffUtil.ChangesDialog" timestamp="1599668618573">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -496,10 +505,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="236" y="139" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1280.800@0.0.1280.800" timestamp="1599466819489" />
-    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599668536895">
+    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599668793644">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1599668536895" />
+    <state x="438" y="321" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1599668793644" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1599472092611">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
