@@ -30,9 +30,10 @@
             <li>Supplier: {{ bottle.supplier }}</li>
             <li>Quantity: {{ bottle.quantity }}</li>
             <li>Owner: {{ bottle.owner }}</li>
+            <li>Location: {{ bottle.location }}</li>
         </ul>
         {% if bottle.is_overdue %}
-            <strong>THE DUE DATE FOR THIS BOTTLE HAS BEEN EXCEEDED</strong>
+            <strong>The due date for this bottle has been exceeded by the borrower.</strong>
         {% endif %}
     {% elif bottle.status == 'empty' %}
         <p>The bottle is <strong>empty</strong>.</p>

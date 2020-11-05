@@ -9,10 +9,13 @@ def parse_expereact(url):
     Download a list of all GBOD... chemicals from expereact,
     parse the html table inside there and return a variable holding the parsed data
     """
-    file = requests.get(url)  # source url from outer scope
-    with open('expereact_source.dat', 'wb') as newfile:
-        newfile.write(file.content)  # download to local file
-        # (somehow the parsing breaks, if file.content is passed directly
+    debug = False  # set to True to avoid reloading expereact data (takes some 20 seconds)
+    # fetch expereact export (omitted if debug is True)
+    if debug is False:
+        file = requests.get(url)  # source url from outer scope
+        with open('expereact_source.dat', 'wb') as newfile:
+            newfile.write(file.content)  # download to local file
+            # (intermediate download is necessary for reliable parsing)
     with open('expereact_source.dat', 'rb') as file:  # load local file
         # Parse html into variable doc
         doc = lh.parse(file)
@@ -24,6 +27,7 @@ def convert_table_to_df(table):
     """
     Convert the parsed html table into a pandas dataframe.
     Some assumptions specific to the data are made. (e.g. number of columns == 14)
+    TODO get rid of this ^ hardcoded limitation
     :return: pandas.DataFrame
     """
     # Create empty list
@@ -88,7 +92,28 @@ def cleanup(df):
     return df
 
 
+def filter_groups(df):
+    """
+    Take the DataFrame parsed from Expereact that holds data for all groups' chemicals
+    and filter for the groups that want to use the system
+    :param df: pandas.DataFrame
+    :return: pandas.DataFrame
+    """
+    # the regex matches group base names + two caps
+    # regex for different groups are chained with | (<-- bitwise OR)
+    regex = 'GBOD[A-Z]{2,2}|' \
+            'GYAM[A-Z]{2,2}|' \
+            'GZEN[A-Z]{2,2}'
+    return df.loc[df['code'].str.fullmatch(regex)]
+
+
 def single_sql_query_to_df(cursor_fetchall, name: str):
+    """
+    Helper function for commit_df_to_db_detail.
+    Iterates over the results from the sql query and turns them into a Dataframe
+    :param cursor_fetchall: pandas.DataFrame
+    :return: pandas.DataFrame
+    """
     id_list = []
     for (row,) in cursor_fetchall:
         id_list.append(row)
@@ -116,7 +141,6 @@ def commit_df_to_db_detail(df_expereact, db_path):
         # find the ones that where deleted from expereact and delete them from db
         df_all = df_empty['id'].to_list() + df_non_empty['id'].to_list()
         list_delete = list(set(df_all) - set(df_expereact['id'].to_list()))
-        # TODO check if the location of any has changed
         for delete_item in list_delete:
             cur.execute('DELETE FROM inventorymanagement_bottle WHERE id=?', (delete_item,))
         conn.commit()
@@ -127,14 +151,34 @@ def commit_df_to_db_detail(df_expereact, db_path):
     return
 
 
+def update_locations(df_expereact, db_path):
+    """
+    update locations in sqlite database from a dataframe parsed from expereact.
+    The method simply overwrites every location with the current one by iterating over
+    df_expereact and updating the one db entry with the same id every iteration.
+    """
+    with sqlite3.connect(db_path) as conn:
+        cur = conn.cursor()
+        # fetch data with old locations from sql
+        df_sql = pd.read_sql("SELECT id, location from inventorymanagement_bottle", conn)
+        # update information
+        for code in df_sql['id'].array:  # iterate over all the bottle codes in db
+            # lookup the new (current) location. Return the value
+            new_location = df_expereact.loc[df_expereact['id'] == code].reset_index().at[0, 'location']
+            # or update database directly (OPTION 2)
+            cur.execute('UPDATE inventorymanagement_bottle SET location = ? WHERE id=?', (new_location, code,))
+    return
+
+
 # variables
-source_url = "http://expereact.ethz.ch/searchstock?for=chemexper&bl=100&so=Field10.15&search=+AND+Field10.6%2B%40%3D" \
-             "%22GBOD%22+AND+Field10.15%3D%2225%22&bl=10000&from=1&for=report&mime_type=application/vnd.ms-excel"
+source_url = "http://expereact.ethz.ch/searchstock?for=chemexper&bl=1000000&so=Field10.15&search=+AND+Field10.15%3D%2225%22&for=report&mime_type=application/vnd.ms-excel"
+# source_url_BODE = "http://expereact.ethz.ch/searchstock?for=chemexper&bl=100&so=Field10.15&search=+AND+Field10.6%2B%40%3D%22GBOD%22+AND+Field10.15%3D%2225%22&bl=10000&from=1&for=report&mime_type=application/vnd.ms-excel"
 db_path = '../db.sqlite3'
 # MAIN
 if __name__ == '__main__':
     table = parse_expereact(source_url)
-    df = convert_table_to_df(table)
-    df_clean = cleanup(df)
-    # df_db = get_db_content(db_path)
-    commit_df_to_db_detail(df_clean, db_path)
+    df_parsed = convert_table_to_df(table)
+    df_clean = cleanup(df_parsed)
+    df_filtered = filter_groups(df_clean)
+    commit_df_to_db_detail(df_filtered, db_path)
+    update_locations(df_filtered, db_path)
