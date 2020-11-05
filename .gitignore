@@ -1,6 +1,9 @@
 # Text backup files
 *.bak
 
+# auxiliary files
+inventorymanagement/expereact_source.dat
+
 # Database
 *.sqlite
 *.sqlite3
