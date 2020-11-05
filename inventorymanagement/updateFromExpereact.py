@@ -116,7 +116,6 @@ def commit_df_to_db_detail(df_expereact, db_path):
         # find the ones that where deleted from expereact and delete them from db
         df_all = df_empty['id'].to_list() + df_non_empty['id'].to_list()
         list_delete = list(set(df_all) - set(df_expereact['id'].to_list()))
-        # TODO check if the location of any has changed
         for delete_item in list_delete:
             cur.execute('DELETE FROM inventorymanagement_bottle WHERE id=?', (delete_item,))
         conn.commit()
@@ -124,6 +123,20 @@ def commit_df_to_db_detail(df_expereact, db_path):
         # print some output to confirm success
         print(f'These bottles were deleted from the db: {list_delete}')
         print(f'These bottles were added to the db: {df_new["id"].to_list()}')
+    return
+
+
+def update_locations(df_expereact, db_path):
+    with sqlite3.connect(db_path) as conn:
+        cur = conn.cursor()
+        # fetch data with old locations from sql
+        df_sql = pd.read_sql("SELECT id, location from inventorymanagement_bottle", conn)
+        # update information
+        for code in df_sql['id'].array:  # iterate over all the bottle codes in db
+            # lookup the new (current) location. Return the value
+            new_location = df_expereact.loc[df_expereact['id'] == code].reset_index().at[0, 'location']
+            # or update database directly (OPTION 2)
+            cur.execute('UPDATE inventorymanagement_bottle SET location = ? WHERE id=?', (new_location, code,))
     return
 
 
@@ -138,3 +151,4 @@ if __name__ == '__main__':
     df_clean = cleanup(df)
     # df_db = get_db_content(db_path)
     commit_df_to_db_detail(df_clean, db_path)
+    update_locations(df_clean, db_path)
