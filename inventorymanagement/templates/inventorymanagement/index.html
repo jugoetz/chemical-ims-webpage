@@ -3,8 +3,7 @@
 {% block content %}
   <h1>Chemical Borrowing System</h1>
   <p>Welcome to the Chemical Borrowing System, a website developed by <em>Julian</em>!</p>
-  <h3>Links</h3>
-  <p>In here you can:</p>
+  <h3>Actions</h3>
       <ul>
         <li><strong><a href="{% url 'inventorymanagement:borrow' %}">Borrow a bottle</a></strong></li>
         <li><strong><a href="{% url 'inventorymanagement:return' %}">Return a bottle (or mark it empty)</a></strong></li>
@@ -13,9 +12,10 @@
     <br>
       <h5>Recent updates</h5>
     <p>
+        2020-11-06 A bug that stopped synchronization of new Expereact entries was resolved<br>
         2020-11-06 Yamakoshi and Zenobi group chemicals have been added<br>
         2020-11-05 Locations are now updated from Expereact every night<br>
     </p>
   <br><br><br>
-  <p> If you find errors or experience unexpected behavior, please notify <em>Julian</em>.</p>
+  <p> If you experience errors, please notify <em>Julian</em> (Bode group, F308).</p>
 {% endblock %}
