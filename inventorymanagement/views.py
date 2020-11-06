@@ -168,3 +168,10 @@ class StatusView(generic.DetailView):
     template_name = 'inventorymanagement/status.html'
 
 
+class AboutView(generic.TemplateView):
+    """
+    This view shows the about page
+    """
+    template_name = 'inventorymanagement/about.html'
+
+
