@@ -1,7 +1,8 @@
-import requests
+import datetime
+import sqlite3
 import lxml.html as lh
 import pandas as pd
-import sqlite3
+import requests
 
 
 def parse_expereact(url):
@@ -111,7 +112,7 @@ def single_sql_query_to_df(cursor_fetchall, name: str):
     """
     Helper function for commit_df_to_db_detail.
     Iterates over the results from the sql query and turns them into a Dataframe
-    :param cursor_fetchall: pandas.DataFrame
+    :param cursor_fetchall: iterable function
     :return: pandas.DataFrame
     """
     id_list = []
@@ -176,9 +177,16 @@ source_url = "http://expereact.ethz.ch/searchstock?for=chemexper&bl=1000000&so=F
 db_path = '../db.sqlite3'
 # MAIN
 if __name__ == '__main__':
+    print('####################################################\n'
+          'Running database update from updateFromExpereact.py\n'
+          '####################################################')
+    print(f'Date: {datetime.date.today().strftime("%d.%m.%Y")}')
+    print(f'Time: {datetime.datetime.now().strftime("%H:%M:%S")}')
     table = parse_expereact(source_url)
     df_parsed = convert_table_to_df(table)
     df_clean = cleanup(df_parsed)
     df_filtered = filter_groups(df_clean)
     commit_df_to_db_detail(df_filtered, db_path)
     update_locations(df_filtered, db_path)
+    print(f'updateFromExpereact.py finished at {datetime.datetime.now().strftime("%H:%M:%S")}\n'
+          f'##################################################\n\n')
