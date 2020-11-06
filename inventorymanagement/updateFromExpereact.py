@@ -136,13 +136,13 @@ def commit_df_to_db_detail(df_expereact, db_path):
         cur.execute('SELECT id FROM inventorymanagement_bottle WHERE NOT status=?', value)
         # this df will hold all ids of non-empty bottles
         df_non_empty = single_sql_query_to_df(cur.fetchall(), 'id')
-        df_all = df_empty['id'].to_list() + df_non_empty['id'].to_list()
+        df_all_ids = df_empty['id'].to_list() + df_non_empty['id'].to_list()
         # reduce df to all the id's that are not yet present in the db (the ~ is the NOT operator)
         # find new bottles by substracting everything already in the db (empty or full) <- this is crucial
-        df_new = df_expereact.loc[~df_expereact['id'].isin(df_all['id'].to_list())]
+        df_new = df_expereact.loc[~df_expereact['id'].isin(df_all_ids)]
         df_new.insert(loc=len(df_new.columns), column='status', value='in')
         # find the ones that where deleted from expereact and delete them from db
-        list_delete = list(set(df_all) - set(df_expereact['id'].to_list()))
+        list_delete = list(set(df_all_ids) - set(df_expereact['id'].to_list()))
         for delete_item in list_delete:
             cur.execute('DELETE FROM inventorymanagement_bottle WHERE id=?', (delete_item,))
         conn.commit()
