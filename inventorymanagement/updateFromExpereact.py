@@ -145,7 +145,14 @@ def commit_df_to_db_detail(df_expereact, db_path):
         for delete_item in list_delete:
             cur.execute('DELETE FROM inventorymanagement_bottle WHERE id=?', (delete_item,))
         conn.commit()
-        df_new.to_sql('inventorymanagement_bottle', conn, if_exists='append', index=False, dtype='varchar(200)')
+        try:
+            df_new.to_sql('inventorymanagement_bottle', conn, if_exists='append', index=False, dtype='varchar(200)')
+        except sqlite3.IntegrityError:
+            # catches the error raise when trying to add a record with an id that already exists
+            print('!!!!!!!!!!!!!!!!!\n'
+                  'ERROR (sqlite3.IntegrityError): Failed to write new expereact entries to database')
+            print(f'Tried to add these entries: {df_new["id"].to_list()} before failing')
+            raise sqlite3.IntegrityError
         # print some output to confirm success
         print(f'These bottles were deleted from the db: {list_delete}')
         print(f'These bottles were added to the db: {df_new["id"].to_list()}')
