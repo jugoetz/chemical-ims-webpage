@@ -129,14 +129,9 @@ def commit_df_to_db_detail(df_expereact, db_path):
     with sqlite3.connect(db_path) as conn:
         cur = conn.cursor()
         # fetch all 'id's in the db
-        value = ('empty',)
-        cur.execute('SELECT id FROM inventorymanagement_bottle WHERE status=?', value)
-        # this df will hold all ids of empty bottles
-        df_empty = single_sql_query_to_df(cur.fetchall(), 'id')
-        cur.execute('SELECT id FROM inventorymanagement_bottle WHERE NOT status=?', value)
-        # this df will hold all ids of non-empty bottles
-        df_non_empty = single_sql_query_to_df(cur.fetchall(), 'id')
-        df_all_ids = df_empty['id'].to_list() + df_non_empty['id'].to_list()
+        cur.execute('SELECT id FROM inventorymanagement_bottle')
+        df_all_ids = single_sql_query_to_df(cur.fetchall(), 'id')['id'].to_list()
+
         # reduce df to all the id's that are not yet present in the db (the ~ is the NOT operator)
         # find new bottles by substracting everything already in the db (empty or full) <- this is crucial
         df_new = df_expereact.loc[~df_expereact['id'].isin(df_all_ids)]
