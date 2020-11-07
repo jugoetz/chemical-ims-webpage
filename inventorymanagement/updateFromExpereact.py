@@ -108,44 +108,44 @@ def filter_groups(df):
     return df.loc[df['code'].str.fullmatch(regex)]
 
 
-def single_sql_query_to_df(cursor_fetchall, name: str):
-    """
-    Helper function for commit_df_to_db_detail.
-    Iterates over the results from the sql query and turns them into a Dataframe
-    :param cursor_fetchall: iterable function
-    :return: pandas.DataFrame
-    """
-    id_list = []
-    for (row,) in cursor_fetchall:
-        id_list.append(row)
-    df = pd.DataFrame({name: id_list})
-    return df
+# LEGACY FUNCTION. Remove if current solution remains stable.
+# def single_sql_query_to_df(cursor_fetchall, name: str):
+#     """
+#     Helper function for commit_df_to_db_detail.
+#     Iterates over the results from the sql query and turns them into a Dataframe
+#     :param cursor_fetchall: iterable function
+#     :return: pandas.DataFrame
+#     """
+#     id_list = []
+#     for (row,) in cursor_fetchall:
+#         id_list.append(row)
+#     df = pd.DataFrame({name: id_list})
+#     return df
 
 
 def commit_df_to_db_detail(df_expereact, db_path):
     """
     Commit a pandas.DataFrame to SQLite3 database. Only add items with 'id' that is not present in the database.
+    Remove items from the database where 'id' is not present in the supplied DataFrame
+    :param df_expereact: pandas.DataFrame
+    :param db_path: str
     """
     with sqlite3.connect(db_path) as conn:
         cur = conn.cursor()
         # fetch all 'id's in the db
-        value = ('empty',)
-        cur.execute('SELECT id FROM inventorymanagement_bottle WHERE status=?', value)
-        # this df will hold all ids of empty bottles
-        df_empty = single_sql_query_to_df(cur.fetchall(), 'id')
-        cur.execute('SELECT id FROM inventorymanagement_bottle WHERE NOT status=?', value)
-        # this df will hold all ids of non-empty bottles
-        df_non_empty = single_sql_query_to_df(cur.fetchall(), 'id')
-        df_all_ids = df_empty['id'].to_list() + df_non_empty['id'].to_list()
+        cur.execute('SELECT id FROM inventorymanagement_bottle')
+        # put all 'id's into list. cur.fetchall() returns a tuple, necessitating list comprehension
+        all_ids = [i[0] for i in cur.fetchall()]
         # reduce df to all the id's that are not yet present in the db (the ~ is the NOT operator)
         # find new bottles by substracting everything already in the db (empty or full) <- this is crucial
-        df_new = df_expereact.loc[~df_expereact['id'].isin(df_all_ids)]
+        df_new = df_expereact.loc[~df_expereact['id'].isin(all_ids)]
         df_new.insert(loc=len(df_new.columns), column='status', value='in')
         # find the ones that where deleted from expereact and delete them from db
-        list_delete = list(set(df_all_ids) - set(df_expereact['id'].to_list()))
+        list_delete = list(set(all_ids) - set(df_expereact['id'].to_list()))
         for delete_item in list_delete:
             cur.execute('DELETE FROM inventorymanagement_bottle WHERE id=?', (delete_item,))
         conn.commit()
+        # write new bottles from Expereact to database
         try:
             df_new.to_sql('inventorymanagement_bottle', conn, if_exists='append', index=False, dtype='varchar(200)')
         except sqlite3.IntegrityError:
