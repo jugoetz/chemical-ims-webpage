@@ -1,9 +1,7 @@
 {% extends "inventorymanagement/base.html" %}
 
 {% block content %}
-    <h1>Chemical Borrowing System</h1>
     <h2> Confirmation </h2>
-
         <p1> You returned this chemical:</p1>
         <ul>
             <li><strong>Bottle code: </strong>{{ bottle.id }}</li>
@@ -13,5 +11,4 @@
             <li><strong>Location: </strong>{{ bottle.location }}</li>
         </ul>
         <p1> Thank you for returning this bottle! </p1>
-
 {% endblock %}

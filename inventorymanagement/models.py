@@ -91,6 +91,12 @@ class Bottle(models.Model):
         else:
             return False
 
+    def is_checked_out(self):
+        """Checks if bottle is currently checked out"""
+        return self.status == 'out'
+
     is_overdue.boolean = True
     is_overdue.description = 'Overdue?'
     is_overdue.admin_order_field = ['due_back']
+    is_checked_out.boolean = True
+    is_checked_out.description = 'Checked out?'
