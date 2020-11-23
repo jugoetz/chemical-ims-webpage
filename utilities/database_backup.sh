@@ -4,7 +4,10 @@
 # Backup the sqlite3 database of chemical-ims-webpage to folder ~/chemborrowsys/database_backup
 # Delete backups after 30 days
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 CURRENTDATE=$(date +%Y-%m-%d)
+# cd to directory of this script
+cd $DIR || exit1
 # copy db to backup folder
 cp ../db.sqlite3 ~/chemborrowsys/database_backup/
 cd ~/chemborrowsys/database_backup || exit 1
