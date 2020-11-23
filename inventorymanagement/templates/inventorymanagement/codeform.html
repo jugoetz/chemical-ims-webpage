@@ -1,15 +1,13 @@
 {% extends "inventorymanagement/base.html" %}
 
 {% block content %}
-
-    <h1>Chemical Borrowing System</h1>
     <p1> To list all your chemicals, please enter your Expereact user code.</p1>
-        <form action = "" method = "post">
-            {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-            </table>
-            <input type="submit" name="code" value=Search>
-        </form>
-
+    <br><br>
+    <form action = "" method = "post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" name="code" value=Search>
+    </form>
 {% endblock %}

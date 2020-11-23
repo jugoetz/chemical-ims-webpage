@@ -1,9 +1,7 @@
 {% extends "inventorymanagement/base.html" %}
 
 {% block content %}
-    <h1>Chemical Borrowing System</h1>
     <h2> Confirmation </h2>
-
         <p1> You marked this chemical as empty:</p1>
         <ul>
             <li><strong>Bottle code: </strong>{{ bottle.id }}</li>
@@ -14,5 +12,4 @@
         </ul>
         <p1><strong>Please remember to remove the bottle from Expereact!</strong></p1>
         <p><a href="http://hci-expereact.ethz.ch/empty_bottle.html">You can follow this link to Expereact</p>
-
 {% endblock %}

@@ -1,16 +1,14 @@
 {% extends "inventorymanagement/base.html" %}
 
 {% block content %}
-    <h1>Chemical Borrowing System</h1>
     <p1> To borrow a chemical, please enter the required information below</p1>
-
-        <form action = "" method = "post">
-            {% csrf_token %}
-            <table>
-                {{ form.as_table }}
-            </table>
-            <input type='hidden' name="status" value="out" />
-            <input type="submit" value=Submit>
-        </form>
-
+    <br><br>
+    <form action = "" method = "post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type='hidden' name="status" value="out" />
+        <input type="submit" value=Submit>
+    </form>
 {% endblock %}

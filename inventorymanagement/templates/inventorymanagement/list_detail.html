@@ -6,7 +6,6 @@
         <tr>
             <th class="chemtable">ID</th>
             <th class="chemtable">Name</th>
-            <th class="chemtable">Owner</th>
             <th class="chemtable">Location</th>
             <th class="chemtable">Checked out?</th>
         </tr>
@@ -14,7 +13,6 @@
             <tr>
                 <td class="chemtable"><a href="{% url 'inventorymanagement:detail' bottle.id %}">{{ bottle.id }}</a></td>
                 <td class="chemtable">{{ bottle.description }}</td>
-                <td class="chemtable">{{ bottle.code }}</td>
                 <td class="chemtable">{{ bottle.location }}</td>
                 <td class="chemtable">{{ bottle.is_checked_out }}</td>
             </tr>
@@ -22,5 +20,6 @@
             <p> No bottles registered for this user</p>
         {% endfor %}
     </table>
+    <br>
 {% endblock %}
 

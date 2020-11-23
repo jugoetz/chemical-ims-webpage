@@ -1,10 +1,7 @@
 {% extends "inventorymanagement/base.html" %}
 
 {% block content %}
-    <h1>Chemical Borrowing System</h1>
-
     <p>Checking status of bottle <em>{{ bottle.id }} ({{ bottle.description }})</em>:</p><br>
-
     {% if bottle.status == "in" %}
         <p>The bottle is currently <strong>checked in</strong>.</p>
         <p>According to Expereact records, the bottle should be located in
