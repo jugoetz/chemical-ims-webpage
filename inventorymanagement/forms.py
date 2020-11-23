@@ -124,3 +124,29 @@ class CheckStatus(forms.Form):
         return bottle_code
 
 
+class CheckUserChemicals(forms.Form):
+    """
+    This is a form to ask user which bottle to check.
+    The purpose is to later redirect the user to the detail page of this bottle.
+    """
+    user_code = forms.CharField(
+        max_length=6,
+        strip=True,
+        required=True
+    )
+
+    def clean_user_code(self):
+        """
+        Validate that the user-entered user code exists in the database
+        """
+        user_code = self.cleaned_data['user_code']
+        try:
+            Bottle.objects.filter(code=user_code)[0]
+        except IndexError:
+            raise ValidationError(
+                message='This user is not listed in the database. '
+                        'If you with to add your group chemicals, '
+                        'consult the About page to learn more.',
+                code='not_in_db'
+            )
+        return user_code

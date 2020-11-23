@@ -1,10 +1,10 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import generic
 from django.core import exceptions
 from .forms import *
-from . import models
+from .models import *
 
 
 # Create your views here.
@@ -58,8 +58,6 @@ def get_checkout_data(request):
                 'borrower_email': email,
                 'borrower_group': group,
             })
-
-
     return render(request, 'inventorymanagement/checkoutform.html', {'form': form})
 
 
@@ -106,7 +104,7 @@ def get_status_data(request):
     """
     This view renders the status check form, and sends the user-entered data back to the server
     """
-    # if this is a GET request we need to process the form data
+    # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = CheckStatus(request.POST)
@@ -125,22 +123,47 @@ def get_status_data(request):
     return render(request, 'inventorymanagement/statusform.html', {'form': form})
 
 
+def get_user_code(request):
+    """
+    This view renders the 'Where are my chemicals?' code entering form, and sends the user-entered code back to the server
+    """
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = CheckUserChemicals(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # redirect to a new URL:
+            response = HttpResponseRedirect(reverse(
+                'inventorymanagement:list_detail',
+                kwargs={'code': form.cleaned_data['user_code']}
+            ))
+
+            return redirect('inventorymanagement:list_detail', code=form.cleaned_data['user_code'])
+    # if a POST (or any other method) we'll create a blank form
+    else:
+        form = CheckUserChemicals()
+
+    return render(request, 'inventorymanagement/codeform.html', {'form': form})
+
+
 class IndexView(generic.ListView):
-    models = models.Bottle
+    models = Bottle
     template_name = 'inventorymanagement/index.html'
 
     def get_queryset(self):
         """
         Excludes any questions not published yet
         """
-        return models.Bottle.objects.filter(code='GBODJG')
+        return Bottle.objects.filter(code='GBODJG')
 
 
 class CheckoutView(generic.DetailView):
     """
     This view shows the user a confirmation page with bottle details after checking out a bottle
     """
-    model = models.Bottle
+    model = Bottle
     template_name = 'inventorymanagement/checkoutconfirm.html'
 
 
@@ -148,7 +171,7 @@ class CheckinView(generic.DetailView):
     """
     This view shows the user a confirmation page after checking in a bottle
     """
-    model = models.Bottle
+    model = Bottle
     template_name = 'inventorymanagement/checkinconfirm.html'
 
 
@@ -156,7 +179,7 @@ class CheckinEmptyView(generic.DetailView):
     """
     This view shows the user a confirmation page after declaring a bottle empty
     """
-    model = models.Bottle
+    model = Bottle
     template_name = 'inventorymanagement/emptyconfirm.html'
 
 
@@ -164,7 +187,7 @@ class StatusView(generic.DetailView):
     """
     This view shows the user detailed bottle information after a status request
     """
-    model = models.Bottle
+    model = Bottle
     template_name = 'inventorymanagement/status.html'
 
 
@@ -173,5 +196,23 @@ class AboutView(generic.TemplateView):
     This view shows the about page
     """
     template_name = 'inventorymanagement/about.html'
+
+
+class UserChemicalsView(generic.ListView):
+    """
+    This view shows all bottles associated to a usercode
+    """
+
+    def dispatch(self, request, *args, **kwargs):
+        self.code = kwargs['code']
+        return super(UserChemicalsView, self).dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = Bottle.objects.filter(code=self.code)
+        return queryset
+
+    model = Bottle
+    template_name = 'inventorymanagement/list_detail.html'
+    ordering = 'description'
 
 

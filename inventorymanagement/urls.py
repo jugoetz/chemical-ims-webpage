@@ -25,7 +25,8 @@ urlpatterns = [
     path('bring/confirmation/<pk>', views.CheckinView.as_view(), name='confirmreturn'),
     path('bring/confirmation_empty/<pk>', views.CheckinEmptyView.as_view(), name='confirmempty'),
     path('status/', views.get_status_data, name='status'),
-    path('status/<pk>', views.StatusView.as_view(), name="detail"),
+    path('status/<pk>', views.StatusView.as_view(), name='detail'),
     path('about/', views.AboutView.as_view(),name='about'),
-
+    path('list/', views.get_user_code, name='list'),
+    path('list/<code>', views.UserChemicalsView.as_view(), name='list_detail'),
 ]
