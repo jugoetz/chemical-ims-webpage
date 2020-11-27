@@ -18,3 +18,5 @@ rm db.sqlite3
 # remove the backup from 30 days ago
 DELETEDATE=$(date --date="${dataset_date} -30 day" +%Y-%m-%d)
 rm backup_${DELETEDATE}.tar.gz
+# print some output
+echo "Backup of sq3lite database was saved to ${PWD}"
