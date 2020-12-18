@@ -149,15 +149,8 @@ def get_user_code(request):
     return render(request, 'inventorymanagement/codeform.html', {'form': form})
 
 
-class IndexView(generic.ListView):
-    models = Bottle
+class IndexView(generic.TemplateView):
     template_name = 'inventorymanagement/index.html'
-
-    def get_queryset(self):
-        """
-        THIS NEEDS TO GO
-        """
-        return Bottle.objects.filter(code='GBODJG')
 
 
 class CheckoutView(generic.DetailView):
