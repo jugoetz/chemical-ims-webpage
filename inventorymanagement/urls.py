@@ -28,5 +28,5 @@ urlpatterns = [
     path('status/<pk>', views.StatusView.as_view(), name='detail'),
     path('about/', views.AboutView.as_view(),name='about'),
     path('list/', views.get_user_code, name='list'),
-    path('list/<code>', views.UserChemicalsView.as_view(), name='list_detail'),
+    path('list/<code>/<only_checked_out>', views.UserChemicalsView.as_view(), name='list_detail'),
 ]

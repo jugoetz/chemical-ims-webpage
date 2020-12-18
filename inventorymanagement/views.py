@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import generic
+from django.views.generic.edit import FormMixin
 from django.core import exceptions
 from .forms import *
 from .models import *
@@ -137,10 +138,10 @@ def get_user_code(request):
             # redirect to a new URL:
             response = HttpResponseRedirect(reverse(
                 'inventorymanagement:list_detail',
-                kwargs={'code': form.cleaned_data['user_code']}
+                kwargs={'code': form.cleaned_data['user_code'], 'only_checked_out': form.cleaned_data['only_checked_out']}
             ))
 
-            return redirect('inventorymanagement:list_detail', code=form.cleaned_data['user_code'])
+            return response
     # if a POST (or any other method) we'll create a blank form
     else:
         form = CheckUserChemicals()
@@ -154,7 +155,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """
-        Excludes any questions not published yet
+        THIS NEEDS TO GO
         """
         return Bottle.objects.filter(code='GBODJG')
 
@@ -205,14 +206,17 @@ class UserChemicalsView(generic.ListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.code = kwargs['code']
+        self.only_checked_out = kwargs['only_checked_out']
         return super(UserChemicalsView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        queryset = Bottle.objects.filter(code=self.code)
+        if self.only_checked_out == 'True':
+            queryset = Bottle.objects.filter(code=self.code, status='out')
+        else:
+            queryset = Bottle.objects.filter(code=self.code)
         return queryset
 
+    form_class = CheckUserChemicals
     model = Bottle
     template_name = 'inventorymanagement/list_detail.html'
     ordering = 'description'
-
-

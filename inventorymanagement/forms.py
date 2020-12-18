@@ -129,10 +129,18 @@ class CheckUserChemicals(forms.Form):
     This is a form to ask user which bottle to check.
     The purpose is to later redirect the user to the detail page of this bottle.
     """
+    class Meta:
+        model = Bottle
+        fields = ['code', 'status']
+
     user_code = forms.CharField(
         max_length=6,
         strip=True,
         required=True
+    )
+    only_checked_out = forms.BooleanField(
+        required=False,
+        label='Display only checked-out bottles?'
     )
 
     def clean_user_code(self):
@@ -140,6 +148,7 @@ class CheckUserChemicals(forms.Form):
         Validate that the user-entered user code exists in the database
         """
         user_code = self.cleaned_data['user_code']
+        user_code = user_code.upper()
         try:
             Bottle.objects.filter(code=user_code)[0]
         except IndexError:
