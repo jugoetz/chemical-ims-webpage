@@ -17,7 +17,11 @@
                 <td class="chemtable">{{ bottle.is_checked_out }}</td>
             </tr>
         {% empty %}
-            <p> No bottles registered for this user</p>
+            {% if view.only_checked_out == "True" %}
+                <p> No bottles checked out from this user</p>
+            {% else %}
+                <p> No bottles registered for this user</p>
+            {% endif %}
         {% endfor %}
     </table>
     <br>
