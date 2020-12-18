@@ -154,7 +154,7 @@ class CheckUserChemicals(forms.Form):
         except IndexError:
             raise ValidationError(
                 message='This user is not listed in the database. '
-                        'If you with to add your group chemicals, '
+                        'If you wish to add your group chemicals, '
                         'consult the About page to learn more.',
                 code='not_in_db'
             )
