@@ -153,6 +153,10 @@ class IndexView(generic.TemplateView):
     template_name = 'inventorymanagement/index.html'
 
 
+class ChangeListView(generic.TemplateView):
+    template_name = 'inventorymanagement/changelist.html'
+
+
 class CheckoutView(generic.DetailView):
     """
     This view shows the user a confirmation page with bottle details after checking out a bottle
