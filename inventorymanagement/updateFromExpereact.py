@@ -181,7 +181,7 @@ def update_locations(df_expereact, db_path):
 
 
 # variables
-source_url = "http://expereact.ethz.ch/searchstock?for=chemexper&bl=1000000&so=Field10.15&search=+AND+Field10.15%3D%2225%22&for=report&mime_type=application/vnd.ms-excel"
+source_url = "https://expereact.ethz.ch/searchstock?for=chemexper&bl=1000000&so=Field10.15&search=+AND+Field10.15%3D%2225%22&for=report&mime_type=application/vnd.ms-excel"
 # source_url_BODE = "http://expereact.ethz.ch/searchstock?for=chemexper&bl=100&so=Field10.15&search=+AND+Field10.6%2B%40%3D%22GBOD%22+AND+Field10.15%3D%2225%22&bl=10000&from=1&for=report&mime_type=application/vnd.ms-excel"
 db_path = '../db.sqlite3'
 # MAIN
