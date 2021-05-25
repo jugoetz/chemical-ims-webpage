@@ -104,6 +104,7 @@ def filter_groups(df):
     # regex for different groups are chained with | (<-- bitwise OR)
     regex = 'GBOD[A-Z]{2,2}|' \
             'GYAM[A-Z]{2,2}|' \
+            'LEHR[A-Z]{2,2}|' \
             'GZEN[A-Z]{2,2}'
     return df.loc[df['code'].str.fullmatch(regex)]
 
