@@ -17,6 +17,8 @@ class Bottle(models.Model):
         ('Ebert', 'Ebert'),
         ('Hilvert', 'Hilvert'),
         ('Kast', 'Kast'),
+        ('Lang', 'Lang'),
+        ('Lehrlabor', 'Lehrlabor'),
         ('Morandi', 'Morandi'),
         ('Thilgen', 'Thilgen'),
         ('Wennemers', 'Wennemers'),
