@@ -181,6 +181,21 @@ def update_locations(df_expereact, db_path):
     return
 
 
+def set_owner_group(db_path):
+    """Iterate owners and set owner group as owner[:4]"""
+    with sqlite3.connect(db_path) as conn:
+        cur = conn.cursor()
+        # fetch data with old locations from sql
+        result = cur.execute("SELECT id, code FROM inventorymanagement_bottle;").fetchall()
+        # update information
+        for (id, owner_code) in result:  # iterate over all the bottle codes in db
+            # lookup the new (current) location. Return the value
+            owner_group = owner_code[:4]
+            # update database
+            cur.execute('UPDATE inventorymanagement_bottle SET owner_group = ? WHERE id=?', (owner_group, id,))
+    return
+
+
 # variables
 source_url = "https://expereact.ethz.ch/searchstock?for=chemexper&bl=1000000&so=Field10.15&search=+AND+Field10.15%3D%2225%22&for=report&mime_type=application/vnd.ms-excel"
 # source_url_BODE = "http://expereact.ethz.ch/searchstock?for=chemexper&bl=100&so=Field10.15&search=+AND+Field10.6%2B%40%3D%22GBOD%22+AND+Field10.15%3D%2225%22&bl=10000&from=1&for=report&mime_type=application/vnd.ms-excel"
@@ -192,11 +207,12 @@ if __name__ == '__main__':
           '####################################################')
     print(f'Date: {datetime.date.today().strftime("%d.%m.%Y")}')
     print(f'Time: {datetime.datetime.now().strftime("%H:%M:%S")}')
-    table = parse_expereact(source_url)
-    df_parsed = convert_table_to_df(table)
-    df_clean = cleanup(df_parsed)
-    df_filtered = filter_groups(df_clean)
-    commit_df_to_db_detail(df_filtered, db_path)
-    update_locations(df_filtered, db_path)
+    # table = parse_expereact(source_url)
+    # df_parsed = convert_table_to_df(table)
+    # df_clean = cleanup(df_parsed)
+    # df_filtered = filter_groups(df_clean)
+    # commit_df_to_db_detail(df_filtered, db_path)
+    # update_locations(df_filtered, db_path)
+    set_owner_group(db_path)
     print(f'updateFromExpereact.py finished at {datetime.datetime.now().strftime("%H:%M:%S")}\n'
           f'##################################################\n\n')
