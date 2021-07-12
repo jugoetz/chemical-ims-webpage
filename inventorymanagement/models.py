@@ -13,7 +13,6 @@ class Bottle(models.Model):
         ('Bode', 'Bode'),
         ('Carreira', 'Carreira'),
         ('Chen', 'Chen'),
-        ('Diederich', 'Diederich'),
         ('Ebert', 'Ebert'),
         ('Hilvert', 'Hilvert'),
         ('Kast', 'Kast'),
@@ -51,13 +50,13 @@ class Bottle(models.Model):
     due_back = models.DateField(
         null=True,
         blank=True,
-        default=timezone.now() + datetime.timedelta(days=3),
-        help_text="Enter a date between now and 2 weeks (default 3 days).",
+        default=timezone.now,
+        help_text="Enter a date between now and 2 weeks.",
         verbose_name='Anticipated return date',
         validators=[validate_two_week_checkout_limit, validate_due_back_not_in_past]
     )
     borrower_full_name = models.CharField(
-        max_length=200,
+        max_length=100,
         null=True,
         blank=True,
         verbose_name='Borrower full name'
@@ -69,8 +68,9 @@ class Bottle(models.Model):
         help_text='Please use your ETH email address',
         validators=[validate_ethz_email_address]
     )
+
     borrower_group = models.CharField(
-        max_length=9,
+        max_length=12,
         choices=choices_of_loc_groups,
         null=True,
         blank=True
