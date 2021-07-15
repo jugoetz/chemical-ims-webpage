@@ -5,11 +5,124 @@ from .validators import *
 import datetime
 
 
-# Create your models here.
-
 
 class Bottle(models.Model):
-    choices_of_loc_groups = [
+    """
+    A model for chemical bottles.
+    id: A bottle has a unique code (or id), usually printed on the bottles in XXX-XXX format. On the database level this
+    formatting is disregarded and the ids are saved as strings of numbers (i.e. XXXXXX). Less digits are ok. More than
+    6 digits may occur at some point in the future, so we allow up to 9.
+
+    Properties changed by the system:
+    - status
+    - checkout_date
+    - due_back
+    - borrower_full_name
+    - borrower_email
+    - borrower_group
+
+    Variable properties:
+    - owner
+    - location
+    - code (?)
+
+    Fixed properties (no change after bottle code issued):
+    - supplier
+    - price
+    - description
+    - quantity
+
+    Calculated properties:
+    - is_overdue: True if due_date is in the past
+    - is_checked_out: True if status == 'out'
+    - owner_group
+    """
+
+
+    # primary key
+
+    id = models.CharField(
+        primary_key=True,
+        max_length=9,
+        verbose_name='Bottle code',
+    )
+
+    # fixed properties
+
+    supplier = models.CharField(
+        max_length=100,
+        editable=False,
+    )
+
+    price = models.CharField(
+        max_length=20,
+        editable=False,
+    )
+
+    description = models.CharField(
+        max_length=200,
+        editable=False,
+    )
+
+    quantity = models.CharField(
+        max_length=20,
+        editable=False,
+    )
+
+    # variable properties
+
+    owner = models.CharField(
+        max_length=100,
+    )
+
+    location = models.CharField(
+        max_length=50,
+    )
+
+    code = models.CharField(
+        max_length=200,
+        default='n/a',
+        verbose_name='owner code'
+    )
+
+    status = models.CharField(
+        choices=[('out', 'checked out'), ('in', 'checked in'), ('empty', 'EMPTY')],
+        default='in',
+        max_length=5,
+    )
+
+    checkout_date = models.DateField(
+        null=True,
+        blank=True,
+        auto_now=True,
+    )
+
+    due_back = models.DateField(
+        null=True,
+        blank=True,
+        default=timezone.now,
+        help_text="Enter a date between now and 2 weeks.",
+        verbose_name='Anticipated return date',
+        validators=[validate_two_week_checkout_limit, validate_due_back_not_in_past],
+    )
+
+    borrower_full_name = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+        verbose_name='Borrower full name',
+    )
+
+    borrower_email = models.EmailField(
+        max_length=100,
+        null=True,
+        blank=True,
+        help_text='Please use your ETH email address',
+        validators=[validate_ethz_email_address],
+    )
+
+    borrower_group = models.CharField(
+        choices=[
         ('Bode', 'Bode'),
         ('Carreira', 'Carreira'),
         ('Chen', 'Chen'),
@@ -24,68 +137,27 @@ class Bottle(models.Model):
         ('Yamakoshi', 'Yamakoshi'),
         ('Zenobi', 'Zenobi'),
         ('other', 'OTHER')
-    ]
-    supplier = models.CharField(max_length=200)
-    price = models.CharField(max_length=200)
-    description = models.CharField(max_length=200)
-    owner = models.CharField(max_length=200)
-    id = models.CharField(
-        primary_key=True,
-        max_length=15,
-        verbose_name='Bottle code'
-    )
-    location = models.CharField(max_length=200)
-    code = models.CharField(max_length=200, default='n/a')
-    quantity = models.CharField(max_length=200)
-    status = models.CharField(
-        choices=[('out', 'checked out'), ('in', 'checked in'), ('empty', 'EMPTY')],
-        default='in',
-        max_length=5
-    )
-    checkout_date = models.DateField(
+    ],
+        max_length=20,
         null=True,
         blank=True,
-        auto_now=True
-    )
-    due_back = models.DateField(
-        null=True,
-        blank=True,
-        default=timezone.now,
-        help_text="Enter a date between now and 2 weeks.",
-        verbose_name='Anticipated return date',
-        validators=[validate_two_week_checkout_limit, validate_due_back_not_in_past]
-    )
-    borrower_full_name = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True,
-        verbose_name='Borrower full name'
-    )
-    borrower_email = models.EmailField(
-        max_length=100,
-        null=True,
-        blank=True,
-        help_text='Please use your ETH email address',
-        validators=[validate_ethz_email_address]
     )
 
-    borrower_group = models.CharField(
-        max_length=12,
-        choices=choices_of_loc_groups,
-        null=True,
-        blank=True
-    )
-
-    # this field has to be set when bottles are added to db
     owner_group = models.CharField(
         max_length=4,
-        editable=False,
-        null=True,
-        blank=True,
     )
+    """The owner group is given by the first 4 letters of the (owner) code"""
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
+    def save(self, *args, **kwargs):
+        """
+        We modify the save method to calculate the owner_group field at save time.
+        (This way, it can be used in querysets and thus for filtering in the Django admin).
+        """
+        self.owner_group = self.code[:4]
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         """Returns the url to access a particular instance of the model."""

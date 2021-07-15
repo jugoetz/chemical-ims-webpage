@@ -28,9 +28,7 @@ class BottleCheckoutForm(ModelForm):
         Validate that the user-entered bottle code exists in the database
         """
         id = ''.join(self.cleaned_data['id'].split('-'))
-        try:
-            Bottle.objects.filter(id=id)[0]
-        except IndexError:
+        if not Bottle.objects.filter(id=id).exists():
             raise ValidationError(
                 message='This bottle is not listed in the database. '
                         'Please check if you used the right bottle code and try again.',
