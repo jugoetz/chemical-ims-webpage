@@ -7,10 +7,10 @@ import requests
 
 def parse_expereact(url):
     """
-    Download a list of all GBOD... chemicals from expereact,
+    Download a list of all chemicals from expereact,
     parse the html table inside there and return a variable holding the parsed data
     """
-    debug = False  # set to True to avoid reloading expereact data (takes some 20 seconds)
+    debug = False  # set to True for development to avoid reloading expereact data (takes some 20 seconds)
     # fetch expereact export (omitted if debug is True)
     if debug is False:
         file = requests.get(url)  # source url from outer scope
@@ -109,21 +109,6 @@ def filter_groups(df):
     return df.loc[df['code'].str.fullmatch(regex)]
 
 
-# LEGACY FUNCTION. Remove if current solution remains stable.
-# def single_sql_query_to_df(cursor_fetchall, name: str):
-#     """
-#     Helper function for commit_df_to_db_detail.
-#     Iterates over the results from the sql query and turns them into a Dataframe
-#     :param cursor_fetchall: iterable function
-#     :return: pandas.DataFrame
-#     """
-#     id_list = []
-#     for (row,) in cursor_fetchall:
-#         id_list.append(row)
-#     df = pd.DataFrame({name: id_list})
-#     return df
-
-
 def commit_df_to_db_detail(df_expereact, db_path):
     """
     Commit a pandas.DataFrame to SQLite3 database. Only add items with 'id' that is not present in the database.
@@ -183,7 +168,6 @@ def update_locations(df_expereact, db_path):
 
 # variables
 source_url = "https://expereact.ethz.ch/searchstock?for=chemexper&bl=1000000&so=Field10.15&search=+AND+Field10.15%3D%2225%22&for=report&mime_type=application/vnd.ms-excel"
-# source_url_BODE = "http://expereact.ethz.ch/searchstock?for=chemexper&bl=100&so=Field10.15&search=+AND+Field10.6%2B%40%3D%22GBOD%22+AND+Field10.15%3D%2225%22&bl=10000&from=1&for=report&mime_type=application/vnd.ms-excel"
 db_path = '../db.sqlite3'
 # MAIN
 if __name__ == '__main__':
