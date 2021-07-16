@@ -1,8 +1,9 @@
+# Custom files
+inventorymanagement/expereact_source.dat
+utilities/changelist_export.csv
+
 # Text backup files
 *.bak
-
-# auxiliary files
-inventorymanagement/expereact_source.dat
 
 # Database
 *.sqlite
