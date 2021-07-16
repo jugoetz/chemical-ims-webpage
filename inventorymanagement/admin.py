@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bottle
+from .models import Bottle, ChangeListEntry
 
 # Register your models here.
 
@@ -26,4 +26,10 @@ class BottleAdmin(admin.ModelAdmin):
     mark_checked_in.short_description = "Mark selected bottles as checked in"
 
 
+class ChangeListEntryAdmin(admin.ModelAdmin):
+    fields = ['date', 'description']
+    list_display = ['entry_id', 'date', 'description']
+
+
 admin.site.register(Bottle, BottleAdmin)
+admin.site.register(ChangeListEntry, ChangeListEntryAdmin)

@@ -11,11 +11,24 @@
     </ul>
     <br>
     <h5>Recent updates</h5>
-    <p>
-        2021-05-27 Group superusers can now filter bottles by owner group<br>
-        2021-05-26 Lehrlabor chemicals were added to the system<br>
-        (see <a href="{% url 'inventorymanagement:changelist' %}">full changelist</a> for more)
-    </p>
+
+    <div class="container-fluid">
+        <table class="table table-borderless table-sm">
+        <tbody>
+            {% for changelistentry in changelistentry_list %}
+            {% if changelistentry.is_recent %}
+            <tr class="d-flex">
+                <td>{{ changelistentry.date | date:"Y-m-d" }}</td>
+                <td>{{ changelistentry.description | safe }}</td>
+            </tr>
+            {% endif %}
+        {% empty %}
+            <p> No recent changes</p>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <p>(see <a href="{% url 'inventorymanagement:changelist' %}">full changelist</a> for more)</p>
     <br><br><br>
     <p> If you experience errors, please notify Julian (Bode group, F312).</p>
 {% endblock %}

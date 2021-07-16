@@ -1,4 +1,5 @@
 from django.test import TestCase
+import datetime
 from ..models import Bottle, ChangeListEntry
 
 
@@ -46,3 +47,28 @@ class BottleModelTests(TestCase):
         self.assertEqual(len(Bottle.objects.filter(owner_group='GBOD')), 1)
 
 
+class ChangeListEntryTestCase(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        ChangeListEntry.objects.create(description='Removed a bug')
+
+    def test_description_max_length(self):
+        changelistentry = ChangeListEntry.objects.get(entry_id=1)
+        max_length = changelistentry._meta.get_field('description').max_length
+        self.assertEqual(max_length, 200)
+
+    def test_date_field_default_is_current_date(self):
+        changelistentry = ChangeListEntry.objects.get(entry_id=1)
+        date = changelistentry.date
+        self.assertEqual(date, datetime.date.today())
+
+    def test_is_recent_is_true_for_recent_change(self):
+        changelistentry = ChangeListEntry.objects.get(entry_id=1)
+        changelistentry.date = datetime.date.today() - datetime.timedelta(days=30)
+        self.assertTrue(changelistentry.is_recent())
+
+    def test_is_recent_is_false_for_old_change(self):
+        changelistentry = ChangeListEntry.objects.get(entry_id=1)
+        changelistentry.date = datetime.date.today() - datetime.timedelta(days=31)
+        self.assertFalse(changelistentry.is_recent())

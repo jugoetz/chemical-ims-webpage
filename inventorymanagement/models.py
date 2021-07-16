@@ -5,7 +5,6 @@ from .validators import *
 import datetime
 
 
-
 class Bottle(models.Model):
     """
     A model for chemical bottles.
@@ -182,3 +181,36 @@ class Bottle(models.Model):
     is_overdue.admin_order_field = ['due_back']
     is_checked_out.boolean = True
     is_checked_out.description = 'Checked out?'
+
+
+class ChangeListEntry(models.Model):
+    """
+    A model for entries in the changelist.
+    A changelist entry consists of
+        - id (auto-generated)
+        - date
+        - description
+    All fields are required.
+    """
+    class Meta:
+        verbose_name = 'changelist entry'
+        verbose_name_plural = 'changelist entries'  # this fixes the plural error on the admin page
+
+    entry_id = models.AutoField(
+        primary_key=True
+    )
+
+    date = models.DateField(
+        default=datetime.date.today
+    )
+
+    description = models.CharField(
+        max_length=200,
+        help_text='Enter a short description of the recorded change (max. 200 characters)'
+    )
+
+    def is_recent(self):
+        """Recent changes are at most 30 days old"""
+        return self.date >= datetime.date.today() - datetime.timedelta(days=30)
+
+    is_recent.boolean = True

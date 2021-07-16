@@ -2,7 +2,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import generic
-from django.views.generic.edit import FormMixin
 from django.core import exceptions
 from .forms import *
 from .models import *
@@ -149,11 +148,15 @@ def get_user_code(request):
     return render(request, 'inventorymanagement/codeform.html', {'form': form})
 
 
-class IndexView(generic.TemplateView):
+class IndexView(generic.ListView):
+    model = ChangeListEntry
+    ordering = '-date'
     template_name = 'inventorymanagement/index.html'
 
 
-class ChangeListView(generic.TemplateView):
+class ChangeListView(generic.ListView):
+    model = ChangeListEntry
+    ordering = '-date'
     template_name = 'inventorymanagement/changelist.html'
 
 

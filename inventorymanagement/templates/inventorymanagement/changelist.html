@@ -1,14 +1,17 @@
 {% extends "inventorymanagement/base.html" %}
 
 {% block content %}
-  <h3>Changelist</h3>
-    <p>
-        2021-05-27 Group superusers can now filter bottles by owner group<br>
-        2021-05-26 Lehrlabor chemicals were added to the system<br>
-        2020-12-18 Checking bottles by owner now offers an option to include only checked-out bottles<br>
-        2020-11-23 New Feature: List all chemicals you own and see whether they are checked out immediately<br>
-        2020-11-06 A bug that stopped synchronization of new Expereact entries was resolved<br>
-        2020-11-06 Yamakoshi and Zenobi group chemicals were added<br>
-        2020-11-05 Locations are now updated from Expereact every night<br>
-    </p>
+    <h3>Changelist</h3>
+    <table class="table table-borderless table-sm">
+        <tbody>
+            {% for changelistentry in changelistentry_list %}
+            <tr class="d-flex">
+                <td>{{ changelistentry.date | date:"Y-m-d" }}</td>
+                <td>{{ changelistentry.description | safe }}</td>
+            </tr>
+        {% empty %}
+            <p> No recent changes</p>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
