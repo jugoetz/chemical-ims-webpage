@@ -29,9 +29,7 @@ def get_checkout_data(request):
         if form.is_valid():
             form.cleaned_data['id'] = form.cleaned_data['id'].replace('-', '')  # remove dashes that user might have used in bottle code
             # process the data in form.cleaned_data as required
-            # TODO remove following 2 comments when send_email is solved
-            # if form.cleaned_data['send_confirmation'] is True:  # send an email if selected by user
-            #     form.send_confirmation_email()
+
             # redirect to a new URL:
             form.save()
             response = HttpResponseRedirect(reverse('inventorymanagement:confirmcheckout',
@@ -50,10 +48,13 @@ def get_checkout_data(request):
         group = request.COOKIES.get('group')
         email = request.COOKIES.get('email')
         if fullname is None or group is None or email is None:
-            form = BottleCheckoutForm()  # return unbound form
+            form = BottleCheckoutForm(initial={
+                'checkout_date': timezone.now().date(),
+            })  # return form without data from cookies
         else:
             # bind cookie data to form
             form = BottleCheckoutForm(initial={
+                'checkout_date': timezone.now().date(),
                 'borrower_full_name': fullname,
                 'borrower_email': email,
                 'borrower_group': group,
@@ -96,7 +97,7 @@ def get_checkin_data(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = BottleCheckinForm()
+        form = BottleCheckinForm(initial={'checkout_date': None})
     return render(request, 'inventorymanagement/checkinform.html', {'form': form})
 
 

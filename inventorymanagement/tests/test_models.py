@@ -16,7 +16,6 @@ class BottleModelTests(TestCase):
                               code='GBODDU',
                               quantity='1000 mL',
                               status='in',
-                              # owner_group='GBOD',
                               )
 
     def setUp(self) -> None:
@@ -45,6 +44,14 @@ class BottleModelTests(TestCase):
     def test_bottle_owner_group_calculated_in_queryset(self):
         """Filtering a queryset by the owner_group must return the correct number (1) of hits."""
         self.assertEqual(len(Bottle.objects.filter(owner_group='GBOD')), 1)
+
+    def test_bottle_borrowed_two_weeks_is_true_for_bottle_borrowed_more_than_two_weeks(self):
+        self.bottle.checkout_date = datetime.date.today() - datetime.timedelta(days=15)
+        self.assertTrue(self.bottle.borrowed_two_weeks())
+
+    def test_bottle_borrowed_two_weeks_is_false_for_bottle_borrowed_only_two_weeks(self):
+        self.bottle.checkout_date = datetime.date.today() - datetime.timedelta(days=14)
+        self.assertFalse(self.bottle.borrowed_two_weeks())
 
 
 class ChangeListEntryTestCase(TestCase):
