@@ -9,8 +9,8 @@ CURRENTDATE=$(date +%Y-%m-%d)
 # cd to directory of this script
 cd $DIR || exit1
 # copy db to backup folder
-cp ../db.sqlite3 ~/chemborrowsys/database_backup/
-cd ~/chemborrowsys/database_backup || exit 1
+cp ../db.sqlite3 ../backup/
+cd ../backup/ || exit 1
 # tar-gz the database copy
 tar -czf backup_${CURRENTDATE}.tar.gz db.sqlite3
 # remove the database copy
@@ -19,4 +19,4 @@ rm db.sqlite3
 DELETEDATE=$(date --date="${dataset_date} -30 day" +%Y-%m-%d)
 rm backup_${DELETEDATE}.tar.gz
 # print some output
-echo "Backup of sq3lite database was saved to ${PWD}"
+echo "Backup of database was saved to ${PWD}"

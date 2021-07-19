@@ -2,6 +2,9 @@
 inventorymanagement/expereact_source.dat
 utilities/changelist_export.csv
 
+# Custom backup
+backup/
+
 # Text backup files
 *.bak
 
