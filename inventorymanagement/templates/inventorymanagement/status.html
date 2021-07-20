@@ -20,7 +20,7 @@
             <li>Name: {{ bottle.borrower_full_name }}</li>
             <li>Group: {{ bottle.borrower_group }}</li>
             <li>E-mail: {{ bottle.borrower_email }}</li>
-            <li>Due date: {{ bottle.due_back }}</li>
+            <li>Borrowed on: {{ bottle.checkout_date | date }}</li>
         </ul>
         <p>Bottle information:</p>
         <ul>
@@ -29,9 +29,6 @@
             <li>Owner: {{ bottle.owner }}</li>
             <li>Location: {{ bottle.location }}</li>
         </ul>
-        {% if bottle.is_overdue %}
-            <strong>The due date for this bottle has been exceeded by the borrower.</strong>
-        {% endif %}
     {% elif bottle.status == 'empty' %}
         <p>The bottle is <strong>empty</strong>.</p>
         <p>The last borrower ({{ bottle.borrower_full_name }}) should remove it from Expereact.</p>
