@@ -116,6 +116,14 @@ def filter_groups(df):
 class Command(BaseCommand):
     help = 'Parses Expereact and updates DB entries and locations.'
 
+    def add_arguments(self, parser):
+
+        parser.add_argument(
+            '--debug',
+            action='store_true',
+            help='Use the local copy of Expereact data for faster debugging',
+        )
+
     def handle(self, *args, **options):
 
         def update_records(df_expereact):
@@ -131,25 +139,30 @@ class Command(BaseCommand):
             bottles_for_deletion = Bottle.objects.exclude(id__in=df_expereact['id'])
             deleted_ids = [bottle.id for bottle in bottles_for_deletion]
             bottles_for_deletion.delete()
-            bottles = []
-            for i, row in df_expereact.iterrows():
-                bottles.append(Bottle(id=row['id'],
-                                      owner=row['owner'],
-                                      location=row['location'],
-                                      supplier=row['supplier'],
-                                      price=row['price'],
-                                      description=row['description'],
-                                      quantity=row['quantity'],
-                                      ))
-            for bottle in bottles:
-                """
-                Note: This is inefficient since we do len(bottles) roundtrips to the DB. However, it is convenient 
-                because save() will handle both INSERT and UPDATE use-cases simultaneously. bulk_create() and
-                bulk_update(), AFAIK, don't do that.
-                """
-                bottle.save()
+            new_ids = []
 
-            return deleted_ids
+            for i, row in df_expereact.iterrows():
+                try:
+                    bottle = Bottle.objects.get(id=row['id'])
+                    bottle.owner = row['owner']
+                    bottle.location = row['location']
+                    bottle.code = row['code']
+                    bottle.save()
+
+                except Bottle.DoesNotExist:
+                    Bottle.objects.create(
+                        id=row['id'],
+                        supplier=row['supplier'],
+                        price=row['price'],
+                        description=row['description'],
+                        quantity=row['quantity'],
+                        owner=row['owner'],
+                        location=row['location'],
+                        code=row['code'],
+                    )
+                    new_ids.append(row['id'])
+
+            return (deleted_ids, new_ids)
 
         self.stdout.write('####################################################\n'
                           'Running database update from updateFromExpereact.py\n'
@@ -158,18 +171,18 @@ class Command(BaseCommand):
         self.stdout.write(f'Time: {datetime.datetime.now().strftime("%H:%M:%S")}')
         initial_id_in_db = list(Bottle.objects.only('id'))
 
-        debug = True
-        if debug is True:
+        if options['debug'] is True:
             self.stdout.write(self.style.WARNING('WARNING: Debug mode turned on. Using local copy of Expereact data.'))
-        table = parse_expereact(debug=debug)
+        table = parse_expereact(debug=options['debug'])
         df_parsed = convert_table_to_df(table)
         df_clean = cleanup(df_parsed)
         df_filtered = filter_groups(df_clean)
-        deleted_ids = update_records(df_filtered)
+        deleted_ids, new_ids = update_records(df_filtered)
         final_id_in_db = list(Bottle.objects.only('id'))
 
         self.stdout.write(f'Deleted records: {deleted_ids}')
         self.stdout.write(f'Deleted records (by comparing state before and after): {list(set(initial_id_in_db) - set(final_id_in_db))}')
-        self.stdout.write(f'New records: {list(set(final_id_in_db) - set(initial_id_in_db))}')
+        self.stdout.write(f'New records: {new_ids}')
+        self.stdout.write(f'New records(by comparing state before and after): {list(set(final_id_in_db) - set(initial_id_in_db))}')
         self.stdout.write(self.style.SUCCESS(f'SUCCESS: updateFromExpereact.py finished at '
                                              f'{datetime.datetime.now().strftime("%H:%M:%S")}\n'))

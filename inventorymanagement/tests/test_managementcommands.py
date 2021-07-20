@@ -2,7 +2,7 @@ from io import StringIO
 from django.core.management import call_command
 from django.test import TestCase
 
-from ..management.commands.parseexpereact import parse_expereact, convert_table_to_df
+from inventorymanagement.management.commands.parseexpereact import parse_expereact, convert_table_to_df
 
 
 class ParseExpereactTest(TestCase):
@@ -14,7 +14,7 @@ class ParseExpereactTest(TestCase):
 
     def test_parseexpereact_runs_successfully(self):
         out = StringIO()
-        call_command('parseexpereact', stdout=out)
+        call_command('parseexpereact', '--debug', stdout=out)
         self.assertIn('SUCCESS', out.getvalue())
 
     def test_parseexpereact_parse_returns_list(self):
@@ -32,6 +32,6 @@ class ParseExpereactTest(TestCase):
     def test_parseexpereact_gives_intermediary_dataframe_with_correct_column_names(self):
         df = convert_table_to_df(self.parsed_data)
         self.assertEqual(df.columns.to_list(), ['Supplier', 'Catalogue Nr', 'Product Description', 'Group Code',
-       'User Name', 'Location', 'Bottle Nr', 'Order Nr', 'Quantity',
-       'Price (CHF)', 'Order Date', 'Reception Date', 'Status', 'Comment'])
+                                                'User Name', 'Location', 'Bottle Nr', 'Order Nr', 'Quantity',
+                                                'Price (CHF)', 'Order Date', 'Reception Date', 'Status', 'Comment'])
 
