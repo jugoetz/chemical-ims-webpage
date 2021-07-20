@@ -10,5 +10,8 @@
         <li><strong>Owner name: </strong>{{ bottle.owner }}</li>
         <li><strong>Location: </strong>{{ bottle.location }}</li>
     </ul>
-    <p1> Please remember to return the chemical by {{ bottle.due_back }} </p1>
+    <p1>
+        <strong>Checkout date:</strong> {{ bottle.checkout_date | date }}. <br>
+        You will receive an e-mail reminder if the bottle has not been returned after two weeks.
+    </p1>
 {% endblock %}
