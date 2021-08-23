@@ -1,6 +1,5 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.core.mail import send_mail
 from django.forms import ModelForm, HiddenInput
 from .models import Bottle
 
@@ -9,10 +8,11 @@ class BottleCheckoutForm(ModelForm):
     """
     This is a form derived from the models.Bottle that records data to check out a bottle
     """
+
     class Meta:
         model = Bottle
-        fields = ['id', 'borrower_full_name', 'borrower_email', 'borrower_group', 'due_back', 'status']
-        widgets = {'status': HiddenInput, 'due_back': forms.SelectDateWidget}
+        fields = ['id', 'borrower_full_name', 'borrower_email', 'borrower_group', 'checkout_date', 'status']
+        widgets = {'status': HiddenInput, 'checkout_date': HiddenInput}
 
     # This modification to __init__ sets the fields required in the form, but not in the model
     def __init__(self, *args, **kwargs):
@@ -20,8 +20,6 @@ class BottleCheckoutForm(ModelForm):
 
         for key in self.fields:
             self.fields[key].required = True
-    # TODO find out how to send email or delete the outcommented statement below
-    # send_confirmation = forms.BooleanField(label='Send confirmation e-mail?', required=False)
 
     def clean_id(self):
         """
@@ -36,19 +34,6 @@ class BottleCheckoutForm(ModelForm):
             )
         return id
 
-    def send_confirmation_email(self):
-
-        subject = 'Confirmation: Inventory checkout'
-        message = f'Dear {self.cleaned_data["borrower_full_name"]},\n' \
-                  f'you checked out bottle {self.cleaned_data["id"]} from Bode group.' \
-                  f'You specified the anticipated return date as {self.cleaned_data["due_back"]}.' \
-                  f'Please remember to return the bottle once you are finished using it.' \
-                  f'If you empty the bottle, please use the check-in form to notify us.\n' \
-                  f'Thank you for using the Bode group chemical borrowing system!'
-        sender = ['noreply@example.com']
-        recipients = [self.cleaned_data['borrower_email']]
-        send_mail(subject, message, sender, recipients)
-
 
 class BottleCheckinForm(ModelForm):
     """
@@ -56,8 +41,8 @@ class BottleCheckinForm(ModelForm):
     """
     class Meta:
         model = Bottle
-        fields = ['id', 'status', 'due_back']
-        widgets = {'status': HiddenInput, 'due_back': HiddenInput}
+        fields = ['id', 'status', 'checkout_date']
+        widgets = {'status': HiddenInput, 'checkout_date': HiddenInput}
     return_status = forms.ChoiceField(
         choices=[('EMPTY', 'empty'), ('OK', 'Returned to assigned shelf')],
         widget=forms.RadioSelect

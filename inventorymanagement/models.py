@@ -15,7 +15,6 @@ class Bottle(models.Model):
     Properties changed by the system:
     - status
     - checkout_date
-    - due_back
     - borrower_full_name
     - borrower_email
     - borrower_group
@@ -32,7 +31,7 @@ class Bottle(models.Model):
     - quantity
 
     Calculated properties:
-    - is_overdue: True if due_date is in the past
+    - borrowed_two_weeks: True if checkout_date is more than 2 weeks in the past
     - is_checked_out: True if status == 'out'
     - owner_group
     """
@@ -93,16 +92,6 @@ class Bottle(models.Model):
     checkout_date = models.DateField(
         null=True,
         blank=True,
-        auto_now=True,
-    )
-
-    due_back = models.DateField(
-        null=True,
-        blank=True,
-        default=timezone.now,
-        help_text="Enter a date between now and 2 weeks.",
-        verbose_name='Anticipated return date',
-        validators=[validate_two_week_checkout_limit, validate_due_back_not_in_past],
     )
 
     borrower_full_name = models.CharField(
@@ -162,13 +151,12 @@ class Bottle(models.Model):
         """Returns the url to access a particular instance of the model."""
         return reverse('inventorymanagement:status', args=[str(self.id)])
 
-    def is_overdue(self):
-        """Checks due_date against current date. Returns True if due_date is in the past"""
-        # only evaluate object if due_back is set (otherwise datetime.date - NoneType raises error)
-        if type(self.due_back) is datetime.date:
+    def borrowed_two_weeks(self):
+        """Returns True if checkout_date is more than 2 weeks in the past"""
+        # only evaluate object if checkout_date is set (otherwise datetime.date - NoneType raises error)
+        if type(self.checkout_date) is datetime.date:
             current_date = timezone.now().date()
-            due_date = self.due_back
-            return (current_date - due_date) > datetime.timedelta(days=1)
+            return (current_date - self.checkout_date) > datetime.timedelta(weeks=2)
         else:
             return False
 
@@ -176,9 +164,9 @@ class Bottle(models.Model):
         """Checks if bottle is currently checked out"""
         return self.status == 'out'
 
-    is_overdue.boolean = True
-    is_overdue.description = 'Overdue?'
-    is_overdue.admin_order_field = ['due_back']
+    borrowed_two_weeks.boolean = True
+    borrowed_two_weeks.description = '2 weeks exceeded?'
+    borrowed_two_weeks.admin_order_field = ['checkout_date']
     is_checked_out.boolean = True
     is_checked_out.description = 'Checked out?'
 

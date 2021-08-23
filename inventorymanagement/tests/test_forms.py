@@ -18,7 +18,6 @@ class BottleCheckoutFormTests(TestCase):
                               code='GBODDU',
                               quantity='1000 mL',
                               status='in',
-                              owner_group='GBOD',
                               )
 
     def setUp(self) -> None:
@@ -27,40 +26,10 @@ class BottleCheckoutFormTests(TestCase):
             'borrower_full_name': 'Test Guy',
             'borrower_email':     'testguy@ethz.ch',
             'borrower_group':     'Bode',
-            'due_back':           timezone.now().date() + timedelta(days=7),
+            'checkout_date':       timezone.now().date(),
             'status':             'out'
         }
         self.bottle = Bottle.objects.get(id='1')
-
-    def test_accepts_no_past_due_back_date(self):
-        """
-        'due_back' field may not accepts user inputs that lie in the past
-        :return:
-        """
-        past_time = timezone.now().date() - timedelta(days=1)
-        wrong_data = self.acceptable_data
-        wrong_data['due_back'] = past_time
-        form = BottleCheckoutForm(data=wrong_data, instance=self.bottle)
-        self.assertFalse(form.is_valid())
-
-    def test_accepts_no_more_than_2_week_future_due_back_date(self):
-        """
-        'due_back' field may not accepts user inputs that lie more than two weeks into the future
-        :return:
-        """
-        future_time = timezone.now().date() + timedelta(days=15)
-        wrong_data = self.acceptable_data
-        wrong_data['due_back'] = future_time
-        form = BottleCheckoutForm(data=wrong_data, instance=self.bottle)
-        self.assertFalse(form.is_valid())
-
-    def test_accepts_1_week_future_due_back_date(self):
-        """
-        'due_back' field must accept user inputs that lie one week into the future
-        :return:
-        """
-        form = BottleCheckoutForm(data=self.acceptable_data, instance=self.bottle)
-        self.assertTrue(form.is_valid())
 
     def test_accepts_ethz_email_address(self):
         """
