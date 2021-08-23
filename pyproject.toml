@@ -10,6 +10,7 @@ Django = "^3.2.5"
 pandas = "1.1.5"
 lxml = "^4.6.3"
 requests = "^2.25.1"
+mod-wsgi = "^4.8.0"
 
 [tool.poetry.dev-dependencies]
 
