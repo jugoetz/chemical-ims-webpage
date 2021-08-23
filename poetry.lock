@@ -71,6 +71,14 @@ htmlsoup = ["beautifulsoup4"]
 source = ["Cython (>=0.29.7)"]
 
 [[package]]
+name = "mod-wsgi"
+version = "4.8.0"
+description = "Installer for Apache/mod_wsgi."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "numpy"
 version = "1.19.5"
 description = "NumPy is the fundamental package for array computing with Python."
@@ -171,7 +179,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "3.6.8"
-content-hash = "191cceca052dcc1fa0712cd3e7dc3e560f9b7cb83fc8e2eb2b3f7c239ed64954"
+content-hash = "14d21c58d5274e13d0213ad48f37cc37042f2ef00e89e7609537984462398b54"
 
 [metadata.files]
 asgiref = [
@@ -241,6 +249,9 @@ lxml = [
     {file = "lxml-4.6.3-cp39-cp39-win32.whl", hash = "sha256:33bb934a044cf32157c12bfcfbb6649807da20aa92c062ef51903415c704704f"},
     {file = "lxml-4.6.3-cp39-cp39-win_amd64.whl", hash = "sha256:542d454665a3e277f76954418124d67516c5f88e51a900365ed54a9806122b83"},
     {file = "lxml-4.6.3.tar.gz", hash = "sha256:39b78571b3b30645ac77b95f7c69d1bffc4cf8c3b157c435a34da72e78c82468"},
+]
+mod-wsgi = [
+    {file = "mod_wsgi-4.8.0.tar.gz", hash = "sha256:7e0f49ec14eb923b366d93eb3f25de3c99881f2adf6aed4b3849d4c1fd16d7fb"},
 ]
 numpy = [
     {file = "numpy-1.19.5-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:cc6bd4fd593cb261332568485e20a0712883cf631f6f5e8e86a52caa8b2b50ff"},
