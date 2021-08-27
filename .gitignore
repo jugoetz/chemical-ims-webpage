@@ -1,6 +1,8 @@
 # Custom files
 inventorymanagement/expereact_source.dat
 utilities/changelist_export.csv
+ChemicalBorrowingWebApp/settings.py
+ChemicalBorrowingWebApp/local_settings.py
 
 # Custom backup
 backup/
