@@ -5,7 +5,8 @@ ChemicalBorrowingWebApp/settings.py
 ChemicalBorrowingWebApp/local_settings.py
 
 # Custom backup
-backup/
+backup/*
+!backup/.gitkeep
 
 # Text backup files
 *.bak
