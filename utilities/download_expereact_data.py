@@ -51,7 +51,7 @@ def upload_data(path):
 
 def main():
     data_path = Path('../inventorymanagement/expereact_source.dat')
-    # _ = parse_expereact(path=data_path, local=False)
+    _ = parse_expereact(path=data_path, local=False)
     upload_data(path=data_path)
 
 
