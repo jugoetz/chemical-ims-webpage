@@ -7,15 +7,15 @@ import pandas as pd
 import requests
 
 
-def parse_expereact(debug):
+def parse_expereact(local):
     """
     Download a list of all chemicals from expereact,
     parse the html table inside there and return a variable holding the parsed data
-    :param debug: set to True for development to avoid reloading expereact data (takes some 20 seconds)
-    :type debug: bool
+    :param local: set to True to avoid reloading expereact data (takes some 20 seconds)
+    :type local: bool
     """
     # fetch expereact export
-    if debug is False:
+    if local is False:
         source_url = "https://expereact.ethz.ch/searchstock?for=chemexper&bl=1000000&so=Field10.15&search=+AND" \
                      "+Field10.15%3D%2225%22&for=report&mime_type=application/vnd.ms-excel "
         file = requests.get(source_url)  # source url from outer scope
@@ -119,9 +119,9 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
 
         parser.add_argument(
-            '--debug',
+            '--local',
             action='store_true',
-            help='Use the local copy of Expereact data for faster debugging',
+            help='Use the local copy of Expereact data as data source',
         )
 
     def handle(self, *args, **options):
@@ -171,9 +171,9 @@ class Command(BaseCommand):
         self.stdout.write(f'Time: {datetime.datetime.now().strftime("%H:%M:%S")}')
         initial_id_in_db = list(Bottle.objects.only('id'))
 
-        if options['debug'] is True:
-            self.stdout.write(self.style.WARNING('WARNING: Debug mode turned on. Using local copy of Expereact data.'))
-        table = parse_expereact(debug=options['debug'])
+        if options['local'] is True:
+            self.stdout.write(self.style.WARNING('WARNING: Using local copy of Expereact data.'))
+        table = parse_expereact(local=options['local'])
         df_parsed = convert_table_to_df(table)
         df_clean = cleanup(df_parsed)
         df_filtered = filter_groups(df_clean)
