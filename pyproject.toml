@@ -10,7 +10,9 @@ Django = "^3.2.5"
 pandas = "1.1.5"
 lxml = "^4.6.3"
 requests = "^2.25.1"
-mod-wsgi = "^4.8.0"
+mod-wsgi = { version = "4.8.0", markers = "sys_platform == 'linux'"}
+paramiko = "^2.7.2"
+scp = "^0.14.1"
 
 [tool.poetry.dev-dependencies]
 

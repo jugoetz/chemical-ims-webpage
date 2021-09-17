@@ -9,12 +9,12 @@ class ParseExpereactTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # we call this only once since it takes ca. 15 seconds (we still call it a second time in the integration test)
-        # This should be run with debug = False every once in a while to assure the expereact layout has not changed.
-        cls.parsed_data = parse_expereact(debug=True)
+        # This should be run with local = False every once in a while to assure the expereact layout has not changed.
+        cls.parsed_data = parse_expereact(local=True)
 
     def test_parseexpereact_runs_successfully(self):
         out = StringIO()
-        call_command('parseexpereact', '--debug', stdout=out)
+        call_command('parseexpereact', '--local', stdout=out)
         self.assertIn('SUCCESS', out.getvalue())
 
     def test_parseexpereact_parse_returns_list(self):
