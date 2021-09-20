@@ -19,15 +19,4 @@ from django.urls import path
 app_name = 'inventorymanagement'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('take/', views.get_checkout_data, name='borrow'),
-    path('take/confirmation/<pk>', views.CheckoutView.as_view(), name='confirmcheckout'),
-    path('bring/', views.get_checkin_data, name='return'),
-    path('bring/confirmation/<pk>', views.CheckinView.as_view(), name='confirmreturn'),
-    path('bring/confirmation_empty/<pk>', views.CheckinEmptyView.as_view(), name='confirmempty'),
-    path('status/', views.get_status_data, name='status'),
-    path('status/<pk>', views.StatusView.as_view(), name='detail'),
-    path('about/', views.AboutView.as_view(), name='about'),
-    path('changelist/', views.ChangeListView.as_view(), name='changelist'),
-    path('list/', views.get_user_code, name='list'),
-    path('list/<code>/<only_checked_out>', views.UserChemicalsView.as_view(), name='list_detail'),
 ]

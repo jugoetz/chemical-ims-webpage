@@ -152,7 +152,7 @@ def get_user_code(request):
 class IndexView(generic.ListView):
     model = ChangeListEntry
     ordering = '-date'
-    template_name = 'inventorymanagement/index.html'
+    template_name = 'inventorymanagement/index_forward.html'
 
 
 class ChangeListView(generic.ListView):
