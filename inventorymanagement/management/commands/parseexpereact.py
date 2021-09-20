@@ -137,9 +137,9 @@ class Command(BaseCommand):
             :param df_expereact: pandas.DataFrame
             """
             bottles_for_deletion = Bottle.objects.exclude(id__in=df_expereact['id'])
-            deleted_ids = [bottle.id for bottle in bottles_for_deletion]
+            deleted_ids = list(bottles_for_deletion.values_list('id', flat=True))
             bottles_for_deletion._raw_delete(bottles_for_deletion.db)
-            # ^ faster than .delete (we don't need cascading) and within sqlite limits
+            # ^ faster than .delete (we don't need cascading)
             new_ids = []
 
             for i, row in df_expereact.iterrows():
