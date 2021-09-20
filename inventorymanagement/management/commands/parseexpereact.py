@@ -1,10 +1,11 @@
-from django.core.management.base import BaseCommand
-from inventorymanagement.models import Bottle
 import datetime
 
 import lxml.html as lh
 import pandas as pd
 import requests
+from django.core.management.base import BaseCommand
+
+from inventorymanagement.models import Bottle
 
 
 def parse_expereact(local):
@@ -136,8 +137,10 @@ class Command(BaseCommand):
                 and quantity as well.
             :param df_expereact: pandas.DataFrame
             """
-            bottles_for_deletion = Bottle.objects.exclude(id__in=df_expereact['id'])
-            deleted_ids = list(bottles_for_deletion.values_list('id', flat=True))
+            ids_in_db = set(Bottle.objects.all().values_list('id', flat=True))
+            ids_in_expereact = set(df_expereact['id'])
+            deleted_ids = list(ids_in_db - ids_in_expereact)
+            bottles_for_deletion = Bottle.objects.filter(id__in=deleted_ids)
             bottles_for_deletion._raw_delete(bottles_for_deletion.db)
             # ^ faster than .delete (we don't need cascading)
             new_ids = []
@@ -170,11 +173,14 @@ class Command(BaseCommand):
                           '####################################################')
         self.stdout.write(f'Date: {datetime.date.today().strftime("%d.%m.%Y")}')
         self.stdout.write(f'Time: {datetime.datetime.now().strftime("%H:%M:%S")}')
-        initial_id_in_db = list(Bottle.objects.only('id'))
 
+        table = parse_expereact(local=options['local'])
         if options['local'] is True:
             self.stdout.write(self.style.WARNING('WARNING: Using local copy of Expereact data.'))
-        table = parse_expereact(local=options['local'])
+        else:
+            self.stdout.write(f'Finished Expereact download at: {datetime.datetime.now().strftime("%H:%M:%S")}')
+
+        initial_id_in_db = list(Bottle.objects.only('id'))
         df_parsed = convert_table_to_df(table)
         df_clean = cleanup(df_parsed)
         df_filtered = filter_groups(df_clean)
