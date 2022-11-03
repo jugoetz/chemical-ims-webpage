@@ -8,4 +8,4 @@ PROJECT_DIR="$( dirname "$( dirname "${BASH_SOURCE[0]}" )" )"
 cd "$PROJECT_DIR" || exit 1
 
 # execute task
-poetry run python manage.py parseexpereact --local
+/instances/home/cbs/.poetry/bin/poetry run python manage.py parseexpereact --local
