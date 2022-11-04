@@ -8,7 +8,7 @@ PROJECT_DIR="$( dirname "$( dirname "${BASH_SOURCE[0]}" )" )"
 cd "$PROJECT_DIR/utilities/" || exit 1
 
 # activate venv
-source ../../.venv/bin/activate
+source $HOME/python3envs/chemborrowsys/bin/activate
 
 # execute task
 python download_expereact_data.py
