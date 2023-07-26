@@ -1,6 +1,8 @@
 # Chemical Borrowing System
 (formerly inventory-management-system)
 
+NOTE: The system was developed for use at ETHZ/LOC and may not directly transfer to other use cases
+
 This is a Django/SQLite-powered website for simple inventory management that allows check-in/check-out of bottles and viewing their status
 
 ## Overwiew
