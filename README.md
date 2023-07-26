@@ -1,5 +1,18 @@
-Additional configuration during installation:
+# Chemical Borrowing System
+(formerly inventory-management-system)
 
+This is a Django/SQLite-powered website for simple inventory management that allows check-in/check-out of bottles and viewing their status
+
+## Overwiew
+![home page](assets/img/cbs-home.webp)
+
+![checkout screen](assets/img/cbs-borrow.webp)
+
+## Installation
+
+Install dependencies with poetry from the provided `pyproject.toml`
+
+Additional configuration during installation:
 
 Set up a daily database backup. 
   A convenience script is provided in `utilities/`. 
